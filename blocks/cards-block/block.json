@@ -1,38 +1,38 @@
 {
   "apiVersion": 3,
-  "name": "my-theme/hero",
-  "title": "Hero Section",
+  "name": "my-theme/cards",
+  "title": "Cards Container",
   "category": "design",
-  "icon": "cover-image",
-  "description": "A hero section with title, subtitle, and CTA",
+  "icon": "grid-view",
+  "description": "A container for displaying multiple cards in a grid layout with heading and description",
   "textdomain": "my-fse-theme",
   "editorScript": "file:./build/index.js",
   "editorStyle": "file:./build/index.css",
   "style": "file:./build/index.css",
   "attributes": {
-    "title": {
+    "heading": {
       "type": "string",
-      "default": "Welcome to Our Site"
+      "default": "Our Features"
     },
-    "subtitle": {
+    "description": {
       "type": "string",
-      "default": "Your journey starts here"
+      "default": "Discover what makes us stand out from the rest."
     },
-    "buttonText": {
-      "type": "string",
-      "default": "Get Started"
+    "cardsPerRow": {
+      "type": "number",
+      "default": 3
     },
-    "buttonUrl": {
+    "alignment": {
       "type": "string",
-      "default": ""
+      "default": "center"
     },
-    "backgroundColor": {
+    "gap": {
       "type": "string",
-      "default": "#0066cc"
+      "default": "2rem"
     },
-    "textColor": {
+    "headingAlignment": {
       "type": "string",
-      "default": "#ffffff"
+      "default": "center"
     }
   },
   "supports": {

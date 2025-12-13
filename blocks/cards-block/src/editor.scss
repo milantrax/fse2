@@ -1,0 +1,24 @@
+.wp-block-my-theme-cards {
+  // Editor-specific styles
+  outline: 2px dashed #ccc;
+  outline-offset: -2px;
+
+  .wp-block-my-theme-cards__heading,
+  .wp-block-my-theme-cards__description {
+    &:focus {
+      outline: none;
+    }
+  }
+
+  // Editor grid layout
+  .wp-block-my-theme-cards__grid {
+    > .block-editor-inner-blocks {
+      > .block-editor-block-list__layout {
+        display: grid;
+        grid-template-columns: repeat(var(--cards-per-row, 3), 1fr);
+        gap: var(--cards-gap, 2rem);
+        align-items: var(--cards-alignment, center);
+      }
+    }
+  }
+}

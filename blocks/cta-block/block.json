@@ -7,8 +7,8 @@
   "description": "A call to action section with title, description, and button",
   "textdomain": "my-fse-theme",
   "editorScript": "file:./build/index.js",
-  "editorStyle": "file:./build/editor.css",
-  "style": "file:./build/style.css",
+  "editorStyle": "file:./build/index.css",
+  "style": "file:./build/index.css",
   "attributes": {
     "title": {
       "type": "string",

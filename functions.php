@@ -11,11 +11,12 @@ function my_fse_theme_register_blocks() {
         'hero-block',
         'cta-block',
         'card-block',
+        'cards-block',
     ];
     
     foreach ($blocks as $block) {
-        $block_path = __DIR__ . '/blocks/' . $block . '/build';
-        if (file_exists($block_path)) {
+        $block_path = __DIR__ . '/blocks/' . $block;
+        if (file_exists($block_path . '/block.json')) {
             register_block_type($block_path);
         }
     }
