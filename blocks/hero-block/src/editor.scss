@@ -1,0 +1,16 @@
+.wp-block-my-theme-hero {
+  // Editor-specific styles
+  outline: 2px dashed #ccc;
+  outline-offset: -2px;
+
+  .wp-block-my-theme-hero__title,
+  .wp-block-my-theme-hero__subtitle {
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .wp-block-my-theme-hero__button {
+    cursor: text;
+  }
+}

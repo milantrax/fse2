@@ -1,0 +1,11 @@
+.wp-block-my-theme-card {
+  outline: 2px dashed #ccc;
+  outline-offset: -2px;
+
+  .wp-block-my-theme-card__title,
+  .wp-block-my-theme-card__description {
+    &:focus {
+      outline: none;
+    }
+  }
+}

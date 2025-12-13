@@ -1,0 +1,46 @@
+.wp-block-my-theme-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  &__icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    line-height: 1;
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #333333;
+  }
+
+  &__description {
+    font-size: 0.9375rem;
+    color: #666666;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  &__link {
+    display: inline-block;
+    color: #0066cc;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #004499;
+      text-decoration: underline;
+    }
+  }
+}

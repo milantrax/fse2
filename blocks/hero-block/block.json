@@ -1,0 +1,49 @@
+{
+  "apiVersion": 3,
+  "name": "my-theme/hero",
+  "title": "Hero Section",
+  "category": "design",
+  "icon": "cover-image",
+  "description": "A hero section with title, subtitle, and CTA",
+  "textdomain": "my-fse-theme",
+  "editorScript": "file:./build/index.js",
+  "editorStyle": "file:./build/editor.css",
+  "style": "file:./build/style.css",
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Welcome to Our Site"
+    },
+    "subtitle": {
+      "type": "string",
+      "default": "Your journey starts here"
+    },
+    "buttonText": {
+      "type": "string",
+      "default": "Get Started"
+    },
+    "buttonUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": "#0066cc"
+    },
+    "textColor": {
+      "type": "string",
+      "default": "#ffffff"
+    }
+  },
+  "supports": {
+    "align": ["wide", "full"],
+    "color": {
+      "background": true,
+      "text": true
+    },
+    "spacing": {
+      "padding": true,
+      "margin": true
+    }
+  }
+}

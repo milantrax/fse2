@@ -1,0 +1,15 @@
+.wp-block-my-theme-cta {
+  outline: 2px dashed #ccc;
+  outline-offset: -2px;
+
+  .wp-block-my-theme-cta__title,
+  .wp-block-my-theme-cta__description {
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .wp-block-my-theme-cta__button {
+    cursor: text;
+  }
+}

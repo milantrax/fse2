@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Build outputs (uncomment for production)
+# assets/build/
+# blocks/*/build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE/Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.local
