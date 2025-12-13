@@ -1,7 +1,6 @@
 .wp-block-my-theme-cards {
   // Editor-specific styles
-  outline: 2px dashed #ccc;
-  outline-offset: -2px;
+  padding: 2rem;
 
   .wp-block-my-theme-cards__heading,
   .wp-block-my-theme-cards__description {
@@ -10,15 +9,90 @@
     }
   }
 
-  // Editor grid layout
+  // Editor grid layout - target WordPress's editor wrappers
   .wp-block-my-theme-cards__grid {
+    // The InnerBlocks creates nested wrappers in the editor
     > .block-editor-inner-blocks {
       > .block-editor-block-list__layout {
         display: grid;
         grid-template-columns: repeat(var(--cards-per-row, 3), 1fr);
         gap: var(--cards-gap, 2rem);
-        align-items: var(--cards-alignment, center);
+        align-items: var(--cards-alignment, stretch);
+
+        // Responsive in editor
+        @media (max-width: 992px) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width: 600px) {
+          grid-template-columns: 1fr;
+        }
       }
     }
+  }
+}
+
+// Card block editor styles
+.wp-block-my-theme-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  min-width: 0; // Prevent grid blowout
+  
+  // Ensure proper sizing in editor
+  &.block-editor-block-list__block {
+    min-width: 200px;
+  }
+
+  .wp-block-my-theme-card__image {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      cursor: pointer;
+    }
+  }
+
+  .wp-block-my-theme-card__icon {
+    font-size: 2.5rem;
+    text-align: center;
+    padding: 1.5rem 1.5rem 0.5rem;
+    line-height: 1;
+  }
+
+  .wp-block-my-theme-card__content {
+    padding: 1rem 1.5rem 1.5rem;
+  }
+
+  .wp-block-my-theme-card__title,
+  .wp-block-my-theme-card__description {
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .wp-block-my-theme-card__title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .wp-block-my-theme-card__description {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    opacity: 0.8;
+  }
+
+  .wp-block-my-theme-card__link {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-weight: 600;
+    color: var(--wp--preset--color--primary, #0066cc);
   }
 }

@@ -1,6 +1,20 @@
 .wp-block-my-theme-card {
-  outline: 2px dashed #ccc;
-  outline-offset: -2px;
+  // Editor-specific styles for standalone card
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  min-width: 200px; // Prevent collapse
+
+  .wp-block-my-theme-card__image {
+    img {
+      cursor: pointer;
+      
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
 
   .wp-block-my-theme-card__title,
   .wp-block-my-theme-card__description {
