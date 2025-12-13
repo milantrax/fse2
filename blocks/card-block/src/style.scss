@@ -1,5 +1,5 @@
 .wp-block-my-theme-card {
-  background-color: #ffffff;
+  background-color: var(--wp--preset--color--white);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 2rem;
@@ -21,25 +21,26 @@
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 0.75rem;
-    color: #333333;
+    color: var(--wp--preset--color--secondary);
   }
 
   &__description {
     font-size: 0.9375rem;
-    color: #666666;
+    color: var(--wp--preset--color--secondary);
+    opacity: 0.8;
     line-height: 1.6;
     margin-bottom: 1rem;
   }
 
   &__link {
     display: inline-block;
-    color: #0066cc;
+    color: var(--wp--preset--color--primary);
     font-weight: 600;
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: filter 0.2s ease;
 
     &:hover {
-      color: #004499;
+      filter: brightness(0.85);
       text-decoration: underline;
     }
   }

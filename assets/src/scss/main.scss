@@ -41,10 +41,10 @@ p {
 a {
   color: $color-primary;
   text-decoration: none;
-  transition: color $transition-fast;
+  transition: color $transition-fast, filter $transition-fast;
 
   &:hover {
-    color: darken($color-primary, 10%);
+    filter: brightness(0.85);
     text-decoration: underline;
   }
 }
