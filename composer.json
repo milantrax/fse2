@@ -1,0 +1,28 @@
+{
+    "name": "granola/fse2-theme",
+    "description": "A modern WordPress FSE theme with custom blocks",
+    "type": "wordpress-theme",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Granola",
+            "email": "info@granola.org"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "wordpress/wp-ai-client": "^0.2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Granola\\FSE2\\": "inc/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    }
+}

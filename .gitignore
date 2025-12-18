@@ -1,5 +1,7 @@
 # Dependencies
 node_modules/
+vendor/
+composer.lock
 
 # Build outputs (uncomment for production)
 # assets/build/

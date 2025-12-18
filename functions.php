@@ -5,6 +5,11 @@
  * @package My_FSE_Theme
  */
 
+// Composer autoload
+if (file_exists(__DIR__ . '/vendor/autoload.php')) {
+    require_once __DIR__ . '/vendor/autoload.php';
+}
+
 // Register custom blocks
 function my_fse_theme_register_blocks() {
     $blocks = [
@@ -82,3 +87,26 @@ function my_fse_theme_setup() {
     add_theme_support('align-wide');
 }
 add_action('after_setup_theme', 'my_fse_theme_setup');
+
+// AI Client Integration
+/*
+use WordPress\AI_Client\AI_Client;
+
+add_action('init', array('WordPress\AI_Client\AI_Client', 'init'));
+add_action(
+	'admin_enqueue_scripts',
+	static function () {
+		wp_enqueue_script('wp-ai-client');
+	}
+);
+
+if (is_singular() && !is_admin()) {
+    $text = AI_Client::prompt( 'Write a haiku about WordPress.' )
+        ->generate_text();
+
+    echo '<pre>';
+    echo '<h2>AI Generated Haiku:</h2>';
+    echo wp_kses_post( $text );
+    echo '</pre>';
+}
+*/
