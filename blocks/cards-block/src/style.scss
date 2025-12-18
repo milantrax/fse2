@@ -1,8 +1,14 @@
 .wp-block-my-theme-cards {
   padding: 4rem 2rem;
 
+  &.alignwide {
+    .wp-block-my-theme-cards__header {
+      max-width: var(--wp--style--global--wide-size, 1200px);
+    }
+  }
+
   &__header {
-    max-width: 800px;
+    max-width: var(--wp--style--global--content-size, 800px);
     margin: 0 auto 3rem;
   }
 

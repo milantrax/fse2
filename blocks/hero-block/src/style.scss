@@ -10,8 +10,14 @@
     min-height: 500px;
   }
 
+  &.alignwide {
+    .wp-block-my-theme-hero__content {
+      max-width: var(--wp--style--global--wide-size, 1200px);
+    }
+  }
+
   &__content {
-    max-width: 800px;
+    max-width: var(--wp--style--global--content-size, 800px);
     margin: 0 auto;
   }
 
