@@ -53,7 +53,7 @@ function my_fse_theme_enqueue_assets() {
         );
     }
 }
-add_action('wp_enqueue_scripts', 'my_fse_theme_enqueue_assets');
+//add_action('wp_enqueue_scripts', 'my_fse_theme_enqueue_assets');
 
 // Register block patterns
 function my_fse_theme_register_patterns() {
