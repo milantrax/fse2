@@ -376,6 +376,23 @@
       }
     }
   },
+  "customTemplates": [
+    {
+      "name": "page-no-sidebar",
+      "title": "Page without Sidebar",
+      "postTypes": ["page"]
+    },
+    {
+      "name": "page-with-sidebar",
+      "title": "Page with Sidebar",
+      "postTypes": ["page"]
+    },
+    {
+      "name": "page-no-title",
+      "title": "Page without Title",
+      "postTypes": ["page"]
+    }
+  ],
   "templateParts": [
     {
       "name": "header",
