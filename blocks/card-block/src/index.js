@@ -5,6 +5,6 @@ import './editor.scss';
 import './style.scss';
 
 registerBlockType('my-theme/card', {
-  edit,
-  save
+    edit,
+    save,
 });

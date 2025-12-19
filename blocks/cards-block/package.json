@@ -1,9 +1,9 @@
 {
-  "name": "cards-block",
-  "version": "1.0.0",
-  "main": "build/index.js",
-  "scripts": {
-    "build": "wp-scripts build src/index.js --output-path=build",
-    "dev": "wp-scripts start src/index.js --output-path=build"
-  }
+    "name": "cards-block",
+    "version": "1.0.0",
+    "main": "build/index.js",
+    "scripts": {
+        "build": "wp-scripts build src/index.js --output-path=build",
+        "dev": "wp-scripts start src/index.js --output-path=build"
+    }
 }

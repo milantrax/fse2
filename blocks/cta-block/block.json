@@ -1,49 +1,49 @@
 {
-  "apiVersion": 3,
-  "name": "my-theme/cta",
-  "title": "Call to Action",
-  "category": "design",
-  "icon": "megaphone",
-  "description": "A call to action section with title, description, and button",
-  "textdomain": "my-fse-theme",
-  "editorScript": "file:./build/index.js",
-  "editorStyle": "file:./build/index.css",
-  "style": "file:./build/index.css",
-  "attributes": {
-    "title": {
-      "type": "string",
-      "default": "Ready to Get Started?"
+    "apiVersion": 3,
+    "name": "my-theme/cta",
+    "title": "Call to Action",
+    "category": "design",
+    "icon": "megaphone",
+    "description": "A call to action section with title, description, and button",
+    "textdomain": "my-fse-theme",
+    "editorScript": "file:./build/index.js",
+    "editorStyle": "file:./build/index.css",
+    "style": "file:./build/index.css",
+    "attributes": {
+        "title": {
+            "type": "string",
+            "default": "Ready to Get Started?"
+        },
+        "description": {
+            "type": "string",
+            "default": "Join thousands of satisfied customers"
+        },
+        "buttonText": {
+            "type": "string",
+            "default": "Sign Up Now"
+        },
+        "buttonUrl": {
+            "type": "string",
+            "default": ""
+        },
+        "backgroundColor": {
+            "type": "string",
+            "default": "#0066cc"
+        },
+        "textColor": {
+            "type": "string",
+            "default": "#ffffff"
+        }
     },
-    "description": {
-      "type": "string",
-      "default": "Join thousands of satisfied customers"
-    },
-    "buttonText": {
-      "type": "string",
-      "default": "Sign Up Now"
-    },
-    "buttonUrl": {
-      "type": "string",
-      "default": ""
-    },
-    "backgroundColor": {
-      "type": "string",
-      "default": "#0066cc"
-    },
-    "textColor": {
-      "type": "string",
-      "default": "#ffffff"
+    "supports": {
+        "align": ["wide", "full"],
+        "color": {
+            "background": true,
+            "text": true
+        },
+        "spacing": {
+            "padding": true,
+            "margin": true
+        }
     }
-  },
-  "supports": {
-    "align": ["wide", "full"],
-    "color": {
-      "background": true,
-      "text": true
-    },
-    "spacing": {
-      "padding": true,
-      "margin": true
-    }
-  }
 }

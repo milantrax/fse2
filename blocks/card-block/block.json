@@ -1,52 +1,52 @@
 {
-  "apiVersion": 3,
-  "name": "my-theme/card",
-  "title": "Card",
-  "category": "design",
-  "icon": "welcome-widgets-menus",
-  "description": "A card component with icon, title, and description",
-  "textdomain": "my-fse-theme",
-  "editorScript": "file:./build/index.js",
-  "editorStyle": "file:./build/index.css",
-  "style": "file:./build/index.css",
-  "attributes": {
-    "mediaId": {
-      "type": "number",
-      "default": 0
+    "apiVersion": 3,
+    "name": "my-theme/card",
+    "title": "Card",
+    "category": "design",
+    "icon": "welcome-widgets-menus",
+    "description": "A card component with icon, title, and description",
+    "textdomain": "my-fse-theme",
+    "editorScript": "file:./build/index.js",
+    "editorStyle": "file:./build/index.css",
+    "style": "file:./build/index.css",
+    "attributes": {
+        "mediaId": {
+            "type": "number",
+            "default": 0
+        },
+        "mediaUrl": {
+            "type": "string",
+            "default": ""
+        },
+        "icon": {
+            "type": "string",
+            "default": "🚀"
+        },
+        "title": {
+            "type": "string",
+            "default": "Card Title"
+        },
+        "description": {
+            "type": "string",
+            "default": "Card description goes here. Enter your content."
+        },
+        "linkUrl": {
+            "type": "string",
+            "default": ""
+        },
+        "linkText": {
+            "type": "string",
+            "default": ""
+        }
     },
-    "mediaUrl": {
-      "type": "string",
-      "default": ""
-    },
-    "icon": {
-      "type": "string",
-      "default": "🚀"
-    },
-    "title": {
-      "type": "string",
-      "default": "Card Title"
-    },
-    "description": {
-      "type": "string",
-      "default": "Card description goes here. Enter your content."
-    },
-    "linkUrl": {
-      "type": "string",
-      "default": ""
-    },
-    "linkText": {
-      "type": "string",
-      "default": ""
+    "supports": {
+        "color": {
+            "background": true,
+            "text": true
+        },
+        "spacing": {
+            "padding": true,
+            "margin": true
+        }
     }
-  },
-  "supports": {
-    "color": {
-      "background": true,
-      "text": true
-    },
-    "spacing": {
-      "padding": true,
-      "margin": true
-    }
-  }
 }

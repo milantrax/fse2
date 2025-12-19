@@ -5,6 +5,6 @@ import './editor.scss';
 import './style.scss';
 
 registerBlockType('my-theme/hero', {
-  edit,
-  save
+    edit,
+    save,
 });
