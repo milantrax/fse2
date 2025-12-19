@@ -88,6 +88,27 @@ function my_fse_theme_setup() {
 }
 add_action('after_setup_theme', 'my_fse_theme_setup');
 
+// Enable SVG upload support
+function my_fse_theme_enable_svg_upload($mimes) {
+    $mimes['svg'] = 'image/svg+xml';
+    $mimes['svgz'] = 'image/svg+xml';
+    return $mimes;
+}
+add_filter('upload_mimes', 'my_fse_theme_enable_svg_upload');
+
+
+// Fix SVG mime type check
+function my_fse_theme_check_svg_filetype($data, $file, $filename, $mimes) {
+    $filetype = wp_check_filetype($filename, $mimes);
+    
+    return [
+        'ext' => $filetype['ext'],
+        'type' => $filetype['type'],
+        'proper_filename' => $data['proper_filename'],
+    ];
+}
+add_filter('wp_check_filetype_and_ext', 'my_fse_theme_check_svg_filetype', 10, 4);
+
 // AI Client Integration
 /*
 use WordPress\AI_Client\AI_Client;

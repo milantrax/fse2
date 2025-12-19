@@ -135,32 +135,32 @@
           "name": "Button"
         },
         {
-          "slug": "h6",
+          "slug": "h-6",
           "size": "clamp(1.125rem, 1.2vw, 1.5rem)",
           "name": "H6"
         },
         {
-          "slug": "h5",
+          "slug": "h-5",
           "size": "clamp(1.25rem, 1.6vw, 1.75rem)",
           "name": "H5"
         },
         {
-          "slug": "h4",
+          "slug": "h-4",
           "size": "clamp(1.5rem, 2vw, 2rem)",
           "name": "H4"
         },
         {
-          "slug": "h3",
+          "slug": "h-3",
           "size": "clamp(1.75rem, 2.4vw, 2.25rem)",
           "name": "H3"
         },
         {
-          "slug": "h2",
+          "slug": "h-2",
           "size": "clamp(2rem, 3.2vw, 3rem)",
           "name": "H2"
         },
         {
-          "slug": "h1",
+          "slug": "h-1",
           "size": "clamp(2.1875rem, 4.2vw, 4.375rem)",
           "name": "H1"
         }
@@ -297,42 +297,42 @@
       "h1": {
         "typography": {
           "fontFamily": "var(--wp--preset--font-family--cooper-lt-bt)",
-          "fontSize": "var(--wp--preset--font-size--h1)",
+          "fontSize": "var(--wp--preset--font-size--h-1)",
           "lineHeight": "1.2"
         }
       },
       "h2": {
         "typography": {
           "fontFamily": "var(--wp--preset--font-family--cooper-lt-bt)",
-          "fontSize": "var(--wp--preset--font-size--h2)",
+          "fontSize": "var(--wp--preset--font-size--h-2)",
           "lineHeight": "1.2"
         }
       },
       "h3": {
         "typography": {
           "fontFamily": "var(--wp--preset--font-family--cooper-lt-bt)",
-          "fontSize": "var(--wp--preset--font-size--h3)",
+          "fontSize": "var(--wp--preset--font-size--h-3)",
           "lineHeight": "1.2"
         }
       },
       "h4": {
         "typography": {
           "fontFamily": "var(--wp--preset--font-family--cooper-lt-bt)",
-          "fontSize": "var(--wp--preset--font-size--h4)",
+          "fontSize": "var(--wp--preset--font-size--h-4)",
           "lineHeight": "1.22"
         }
       },
       "h5": {
         "typography": {
           "fontFamily": "var(--wp--preset--font-family--cooper-lt-bt)",
-          "fontSize": "var(--wp--preset--font-size--h5)",
+          "fontSize": "var(--wp--preset--font-size--h-5)",
           "lineHeight": "1.32"
         }
       },
       "h6": {
         "typography": {
           "fontFamily": "var(--wp--preset--font-family--cooper-lt-bt)",
-          "fontSize": "var(--wp--preset--font-size--h6)",
+          "fontSize": "var(--wp--preset--font-size--h-6)",
           "lineHeight": "1.32"
         }
       }
