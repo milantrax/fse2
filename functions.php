@@ -11,14 +11,15 @@ if (file_exists(__DIR__ . '/vendor/autoload.php')) {
 }
 
 // Register custom blocks
-function my_fse_theme_register_blocks() {
+function my_fse_theme_register_blocks()
+{
     $blocks = [
         'hero-block',
         'cta-block',
         'card-block',
         'cards-block',
     ];
-    
+
     foreach ($blocks as $block) {
         $block_path = __DIR__ . '/blocks/' . $block;
         if (file_exists($block_path . '/block.json')) {
@@ -29,9 +30,10 @@ function my_fse_theme_register_blocks() {
 add_action('init', 'my_fse_theme_register_blocks');
 
 // Enqueue theme assets
-function my_fse_theme_enqueue_assets() {
+function my_fse_theme_enqueue_assets()
+{
     $asset_path = get_template_directory() . '/assets/build/main.css';
-    
+
     if (file_exists($asset_path)) {
         wp_enqueue_style(
             'my-fse-theme-styles',
@@ -40,9 +42,9 @@ function my_fse_theme_enqueue_assets() {
             wp_get_theme()->get('Version')
         );
     }
-    
+
     $script_path = get_template_directory() . '/assets/build/main.js';
-    
+
     if (file_exists($script_path)) {
         wp_enqueue_script(
             'my-fse-theme-scripts',
@@ -56,7 +58,8 @@ function my_fse_theme_enqueue_assets() {
 //add_action('wp_enqueue_scripts', 'my_fse_theme_enqueue_assets');
 
 // Register block patterns
-function my_fse_theme_register_patterns() {
+function my_fse_theme_register_patterns()
+{
     register_block_pattern_category('my-theme', [
         'label' => __('My Theme Patterns', 'my-fse-theme'),
     ]);
@@ -64,7 +67,8 @@ function my_fse_theme_register_patterns() {
 add_action('init', 'my_fse_theme_register_patterns');
 
 // Theme setup
-function my_fse_theme_setup() {
+function my_fse_theme_setup()
+{
     // Add default posts and comments RSS feed links to head
     add_theme_support('automatic-feed-links');
 
@@ -89,7 +93,8 @@ function my_fse_theme_setup() {
 add_action('after_setup_theme', 'my_fse_theme_setup');
 
 // Enable SVG upload support
-function my_fse_theme_enable_svg_upload($mimes) {
+function my_fse_theme_enable_svg_upload($mimes)
+{
     $mimes['svg'] = 'image/svg+xml';
     $mimes['svgz'] = 'image/svg+xml';
     return $mimes;
@@ -98,9 +103,10 @@ add_filter('upload_mimes', 'my_fse_theme_enable_svg_upload');
 
 
 // Fix SVG mime type check
-function my_fse_theme_check_svg_filetype($data, $file, $filename, $mimes) {
+function my_fse_theme_check_svg_filetype($data, $file, $filename, $mimes)
+{
     $filetype = wp_check_filetype($filename, $mimes);
-    
+
     return [
         'ext' => $filetype['ext'],
         'type' => $filetype['type'],
@@ -115,10 +121,10 @@ use WordPress\AI_Client\AI_Client;
 
 add_action('init', array('WordPress\AI_Client\AI_Client', 'init'));
 add_action(
-	'admin_enqueue_scripts',
-	static function () {
-		wp_enqueue_script('wp-ai-client');
-	}
+    'admin_enqueue_scripts',
+    static function () {
+        wp_enqueue_script('wp-ai-client');
+    }
 );
 
 if (is_singular() && !is_admin()) {
