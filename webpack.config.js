@@ -19,14 +19,17 @@ blockDirs.forEach(dir => {
 module.exports = {
   entry: {
     'assets/build/main': [
-      './assets/src/js/main.js',
-      './assets/src/scss/main.scss'
+        './assets/src/js/main.js',
+        './assets/src/scss/main.scss'
     ],
     ...blockEntries
   },
   output: {
     path: path.resolve(__dirname),
     filename: '[name].js'
+  },
+  experiments: {
+    topLevelAwait: true,
   },
   module: {
     rules: [
@@ -63,7 +66,7 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin({
       filename: '[name].css'
-    })
+    }),
   ],
   externals: {
     '@wordpress/blocks': ['wp', 'blocks'],
