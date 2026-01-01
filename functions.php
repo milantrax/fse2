@@ -32,6 +32,7 @@ add_action('init', 'my_fse_theme_register_blocks');
 // Enqueue theme assets
 function my_fse_theme_enqueue_assets()
 {
+    /*
     $asset_path = get_template_directory() . '/assets/build/main.css';
 
     if (file_exists($asset_path)) {
@@ -42,6 +43,7 @@ function my_fse_theme_enqueue_assets()
             wp_get_theme()->get('Version')
         );
     }
+    */
 
     $script_path = get_template_directory() . '/assets/build/main.js';
 

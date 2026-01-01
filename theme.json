@@ -12,6 +12,15 @@
             "customGradient": false,
             "defaultGradients": false,
             "gradients": [],
+            "customDuotone": false,
+            "defaultDuotone": false,
+            "duotone": [
+                {
+                    "slug": "grayscale",
+                    "colors": ["#000000", "#FFFFFF"],
+                    "name": "Grayscale"
+                }
+            ],
             "palette": [
                 {
                     "slug": "primary",
@@ -186,6 +195,26 @@
                 { "slug": "xxl", "size": "80px", "name": "2XL" },
                 { "slug": "xxxl", "size": "120px", "name": "3XL" },
                 { "slug": "responsive-xl", "size": "clamp(40px, 6vw, 80px)", "name": "Responsive XL" }
+            ]
+        },
+        "shadow": {
+            "defaultPresets": false,
+            "presets": [
+                {
+                    "slug": "small",
+                    "shadow": "0 2px 4px rgba(0, 0, 0, 0.1)",
+                    "name": "Small"
+                },
+                {
+                    "slug": "medium",
+                    "shadow": "0 4px 12px rgba(0, 0, 0, 0.15)",
+                    "name": "Medium"
+                },
+                {
+                    "slug": "large",
+                    "shadow": "0 8px 20px rgba(0, 0, 0, 0.15)",
+                    "name": "Large"
+                }
             ]
         },
         "border": {

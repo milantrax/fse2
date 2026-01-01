@@ -1,7 +1,7 @@
 .wp-block-my-theme-card {
     background-color: var(--wp--preset--color--white);
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--wp--preset--shadow--small);
     overflow: hidden;
     transition:
         transform 0.2s ease,
@@ -11,7 +11,7 @@
 
     &:hover {
         transform: translateY(-4px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        box-shadow: var(--wp--preset--shadow--large);
     }
 
     // Image at top - full width
