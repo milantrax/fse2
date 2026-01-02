@@ -1,7 +1,7 @@
 // Main Theme Styles
-@import 'variables';
-@import 'mixins';
-@import 'utilities';
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'utilities';
 
 // CSS Reset
 *,

@@ -28,9 +28,6 @@ module.exports = {
     path: path.resolve(__dirname),
     filename: '[name].js'
   },
-  experiments: {
-    topLevelAwait: true,
-  },
   module: {
     rules: [
       {
@@ -58,7 +55,12 @@ module.exports = {
               }
             }
           },
-          'sass-loader'
+          {
+            loader: 'sass-loader',
+            options: {
+              api: 'modern'
+            }
+          }
         ]
       }
     ]

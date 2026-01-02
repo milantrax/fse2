@@ -1,3 +1,5 @@
+@use 'variables' as *;
+
 // Responsive breakpoint mixin
 @mixin breakpoint($size) {
     @if $size == sm {
