@@ -22,10 +22,8 @@
         "postcss-loader": "^7.3.3",
         "sass": "^1.69.5",
         "sass-loader": "^13.3.2",
+        "sass-mq": "^7.0.0",
         "webpack": "^5.89.0",
         "webpack-cli": "^5.1.4"
-    },
-    "dependencies": {
-        
     }
 }
