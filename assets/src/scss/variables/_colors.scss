@@ -16,32 +16,33 @@ $color-error: #FD0000;
 $duotone-grayscale: (#000000, #FFFFFF);
 
 // Color Pairings
-$color-pairing-light-blue: (
+$color-pairing-on-light-blue: (
     foreground: $color-blueberry,
     link: $color-blueberry,
     link-hover: $color-blueberry
 );
 
-$color-pairing-blueberry: (
+$color-pairing-on-blueberry: (
     foreground: $color-barely-white,
     link: $color-barely-white,
     link-hover: $color-barely-white
 );
 
-$color-pairing-lemon: (
+$color-pairing-on-lemon: (
     foreground: $color-blueberry,
     link: $color-blueberry,
     link-hover: $color-blueberry
 );
 
-$color-pairing-barely-white: (
+$color-pairing-on-barely-white: (
     foreground: $color-blueberry,
     link: $color-blueberry,
     link-hover: $color-blueberry
 );
 
-$color-pairing-aquamarine: (
+$color-pairing-on-aquamarine: (
     foreground: $color-pure-white,
     link: $color-pure-white,
     link-hover: $color-pure-white
 );
+
