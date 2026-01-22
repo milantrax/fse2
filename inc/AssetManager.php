@@ -11,11 +11,11 @@
 namespace Granola\FSE2;
 
 /**
- * Class Asset_Manager
+ * Class AssetManager
  *
  * Manages theme asset enqueuing.
  */
-class Asset_Manager
+class AssetManager
 {
     /**
      * Assets directory path

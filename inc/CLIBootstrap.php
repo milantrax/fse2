@@ -13,11 +13,11 @@ namespace Granola\FSE2;
 use WP_CLI;
 
 /**
- * Class CLI_Bootstrap
+ * Class CLIBootstrap
  *
  * Manages WP-CLI command registration.
  */
-class CLI_Bootstrap
+class CLIBootstrap
 {
     /**
      * Register WP-CLI commands
@@ -38,7 +38,7 @@ class CLI_Bootstrap
      */
     private static function registerCommands()
     {
-        WP_CLI::add_command('global-styles', 'Granola\FSE2\Global_Styles_Command');
+        WP_CLI::add_command('global-styles', 'Granola\FSE2\GlobalStylesCommand');
     }
 
     /**

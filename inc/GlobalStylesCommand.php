@@ -14,11 +14,11 @@ use WP_CLI;
 use WP_Theme_JSON_Resolver;
 
 /**
- * Class Global_Styles_Command
+ * Class GlobalStylesCommand
  *
  * WP-CLI command for exporting global styles from WordPress database to theme.json.
  */
-class Global_Styles_Command
+class GlobalStylesCommand
 {
     /**
      * Path to theme.json file

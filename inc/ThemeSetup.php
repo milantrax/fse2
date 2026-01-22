@@ -11,11 +11,11 @@
 namespace Granola\FSE2;
 
 /**
- * Class Theme_Setup
+ * Class ThemeSetup
  *
  * Manages theme supports and block pattern categories.
  */
-class Theme_Setup
+class ThemeSetup
 {
     /**
      * Constructor

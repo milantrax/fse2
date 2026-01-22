@@ -11,11 +11,11 @@
 namespace Granola\FSE2;
 
 /**
- * Class Media_Handler
+ * Class MediaHandler
  *
  * Manages media upload support, including SVG files.
  */
-class Media_Handler
+class MediaHandler
 {
     /**
      * Constructor

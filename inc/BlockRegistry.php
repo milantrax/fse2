@@ -11,11 +11,11 @@
 namespace Granola\FSE2;
 
 /**
- * Class Block_Registry
+ * Class BlockRegistry
  *
  * Manages registration of custom Gutenberg blocks.
  */
-class Block_Registry
+class BlockRegistry
 {
     /**
      * Blocks directory path

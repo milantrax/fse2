@@ -11,26 +11,26 @@ if (file_exists(__DIR__ . '/vendor/autoload.php')) {
 }
 
 // Use statements
-use Granola\FSE2\Block_Registry;
-use Granola\FSE2\Asset_Manager;
-use Granola\FSE2\Theme_Setup;
-use Granola\FSE2\Media_Handler;
-use Granola\FSE2\CLI_Bootstrap;
+use Granola\FSE2\BlockRegistry;
+use Granola\FSE2\AssetManager;
+use Granola\FSE2\ThemeSetup;
+use Granola\FSE2\MediaHandler;
+use Granola\FSE2\CLIBootstrap;
 
 // Initialize core theme components
-$block_registry = new Block_Registry();
+$block_registry = new BlockRegistry();
 $block_registry->register();
 
-$asset_manager = new Asset_Manager();
+$asset_manager = new AssetManager();
 $asset_manager->register();
 
-$theme_setup = new Theme_Setup();
+$theme_setup = new ThemeSetup();
 $theme_setup->register();
 
-$media_handler = new Media_Handler();
+$media_handler = new MediaHandler();
 $media_handler->register();
 
 // Register WP-CLI commands
 if (defined('WP_CLI') && WP_CLI) {
-    CLI_Bootstrap::register();
+    CLIBootstrap::register();
 }
