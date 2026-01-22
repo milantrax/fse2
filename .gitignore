@@ -26,3 +26,6 @@ npm-debug.log*
 .env.local
 blocks/*/build
 assets/build
+
+# Global styles backups
+backups/theme.json.backup.*

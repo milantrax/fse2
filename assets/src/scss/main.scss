@@ -1,10 +1,2 @@
 @use 'variables' as *;
 @use 'mixins/mq' as *;
-
-h1 {
-    @include mq(desktop) {
-        font-size: 3rem;
-    }
-
-    font-size: 2rem;
-}

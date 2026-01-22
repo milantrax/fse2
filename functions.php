@@ -117,25 +117,16 @@ function my_fse_theme_check_svg_filetype($data, $file, $filename, $mimes)
 }
 add_filter('wp_check_filetype_and_ext', 'my_fse_theme_check_svg_filetype', 10, 4);
 
-// AI Client Integration
-/*
-use WordPress\AI_Client\AI_Client;
+// Register WP-CLI Global Styles Export Command
+if (defined('WP_CLI') && WP_CLI) {
+    require_once __DIR__ . '/inc/class-global-styles-command.php';
 
-add_action('init', array('WordPress\AI_Client\AI_Client', 'init'));
-add_action(
-    'admin_enqueue_scripts',
-    static function () {
-        wp_enqueue_script('wp-ai-client');
-    }
-);
+    // Suppress PHP 8.2+ deprecation warnings from WP-CLI internals
+    $previousErrorReporting = error_reporting();
+    error_reporting($previousErrorReporting & ~E_DEPRECATED);
 
-if (is_singular() && !is_admin()) {
-    $text = AI_Client::prompt( 'Write a haiku about WordPress.' )
-        ->generate_text();
+    WP_CLI::add_command('global-styles', 'Granola\FSE2\Global_Styles_Command');
 
-    echo '<pre>';
-    echo '<h2>AI Generated Haiku:</h2>';
-    echo wp_kses_post( $text );
-    echo '</pre>';
+    // Restore previous error reporting level
+    error_reporting($previousErrorReporting);
 }
-*/
