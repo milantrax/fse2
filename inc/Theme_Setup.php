@@ -1,0 +1,83 @@
+<?php
+/**
+ * Theme Setup
+ *
+ * Handles theme configuration and block pattern registration.
+ *
+ * @package Granola\FSE2
+ * @since 1.0.0
+ */
+
+namespace Granola\FSE2;
+
+/**
+ * Class Theme_Setup
+ *
+ * Manages theme supports and block pattern categories.
+ */
+class Theme_Setup
+{
+    /**
+     * Constructor
+     *
+     * Initializes the theme setup.
+     */
+    public function __construct()
+    {
+        // Initialization code if needed
+    }
+
+    /**
+     * Register hooks
+     *
+     * @return void
+     */
+    public function register()
+    {
+        add_action('after_setup_theme', [$this, 'setup']);
+        add_action('init', [$this, 'registerPatternCategories']);
+    }
+
+    /**
+     * Theme setup
+     *
+     * Configure theme supports and features.
+     *
+     * @return void
+     */
+    public function setup()
+    {
+        // Add default posts and comments RSS feed links to head
+        add_theme_support('automatic-feed-links');
+
+        // Let WordPress manage the document title
+        add_theme_support('title-tag');
+
+        // Enable support for Post Thumbnails
+        add_theme_support('post-thumbnails');
+
+        // Add support for responsive embedded content
+        add_theme_support('responsive-embeds');
+
+        // Add support for block styles
+        add_theme_support('wp-block-styles');
+
+        // Add support for editor styles
+        add_theme_support('editor-styles');
+
+        // Add support for wide alignment
+        add_theme_support('align-wide');
+    }
+
+    /**
+     * Register block pattern categories
+     *
+     * @return void
+     */
+    public function registerPatternCategories()
+    {
+        register_block_pattern_category('my-theme', [
+            'label' => __('My Theme Patterns', 'my-fse-theme'),
+        ]);
+    }
+}
