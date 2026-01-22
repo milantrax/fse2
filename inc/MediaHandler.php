@@ -28,11 +28,11 @@ class MediaHandler
     }
 
     /**
-     * Register hooks
+     * Initialize hooks
      *
      * @return void
      */
-    public function register()
+    public function init()
     {
         add_filter('upload_mimes', [$this, 'enableSvgUpload']);
         add_filter('wp_check_filetype_and_ext', [$this, 'fixSvgFiletypeCheck'], 10, 4);

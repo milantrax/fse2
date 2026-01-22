@@ -39,20 +39,45 @@ class BlockRegistry
     public function __construct()
     {
         $this->blocksDir = get_template_directory() . '/blocks';
-        $this->blocks = [
-            'hero-block',
-            'cta-block',
-            'card-block',
-            'cards-block',
-        ];
+        $this->blocks = $this->getBlocksFromDirectory();
     }
 
     /**
-     * Register hooks
+     * Get all valid blocks from the blocks directory
+     *
+     * @return array Array of block directory names.
+     */
+    private function getBlocksFromDirectory()
+    {
+        $blocks = [];
+
+        if (!is_dir($this->blocksDir)) {
+            return $blocks;
+        }
+
+        $items = scandir($this->blocksDir);
+
+        foreach ($items as $item) {
+            if ($item === '.' || $item === '..') {
+                continue;
+            }
+
+            $blockPath = $this->blocksDir . '/' . $item;
+
+            if (is_dir($blockPath) && $this->isValidBlock($blockPath)) {
+                $blocks[] = $item;
+            }
+        }
+
+        return $blocks;
+    }
+
+    /**
+     * Initialize hooks
      *
      * @return void
      */
-    public function register()
+    public function init()
     {
         add_action('init', [$this, 'registerBlocks']);
     }

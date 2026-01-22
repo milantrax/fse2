@@ -51,11 +51,11 @@ class AssetManager
     }
 
     /**
-     * Register hooks
+     * Initialize hooks
      *
      * @return void
      */
-    public function register()
+    public function init()
     {
         add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
     }

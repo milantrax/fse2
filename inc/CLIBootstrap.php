@@ -20,11 +20,11 @@ use WP_CLI;
 class CLIBootstrap
 {
     /**
-     * Register WP-CLI commands
+     * Initialize WP-CLI commands
      *
      * @return void
      */
-    public static function register()
+    public static function init()
     {
         self::suppressDeprecationWarnings(function() {
             self::registerCommands();

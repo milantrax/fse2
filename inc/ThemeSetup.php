@@ -28,11 +28,11 @@ class ThemeSetup
     }
 
     /**
-     * Register hooks
+     * Initialize hooks
      *
      * @return void
      */
-    public function register()
+    public function init()
     {
         add_action('after_setup_theme', [$this, 'setup']);
         add_action('init', [$this, 'registerPatternCategories']);

@@ -19,18 +19,18 @@ use Granola\FSE2\CLIBootstrap;
 
 // Initialize core theme components
 $block_registry = new BlockRegistry();
-$block_registry->register();
+$block_registry->init();
 
 $asset_manager = new AssetManager();
-$asset_manager->register();
+$asset_manager->init();
 
 $theme_setup = new ThemeSetup();
-$theme_setup->register();
+$theme_setup->init();
 
 $media_handler = new MediaHandler();
-$media_handler->register();
+$media_handler->init();
 
-// Register WP-CLI commands
+// Initialize WP-CLI commands
 if (defined('WP_CLI') && WP_CLI) {
-    CLIBootstrap::register();
+    CLIBootstrap::init();
 }
