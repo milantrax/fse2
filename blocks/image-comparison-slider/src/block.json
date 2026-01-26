@@ -1,0 +1,63 @@
+
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "telex/image-comparison-slider",
+	"version": "0.1.0",
+	"title": "Image Comparison Slider",
+	"category": "media",
+	"icon": "image-flip-horizontal",
+	"description": "Compare two images with an interactive draggable slider",
+	"example": {
+		"attributes": {
+			"beforeImageUrl": "https://via.placeholder.com/800x600/4A90E2/FFFFFF?text=Before",
+			"afterImageUrl": "https://via.placeholder.com/800x600/7ED321/FFFFFF?text=After"
+		}
+	},
+	"attributes": {
+		"beforeImageId": {
+			"type": "number"
+		},
+		"beforeImageUrl": {
+			"type": "string"
+		},
+		"beforeImageAlt": {
+			"type": "string",
+			"default": ""
+		},
+		"afterImageId": {
+			"type": "number"
+		},
+		"afterImageUrl": {
+			"type": "string"
+		},
+		"afterImageAlt": {
+			"type": "string",
+			"default": ""
+		},
+		"beforeLabel": {
+			"type": "string",
+			"default": "Before"
+		},
+		"afterLabel": {
+			"type": "string",
+			"default": "After"
+		},
+		"customHeight": {
+			"type": "number"
+		},
+		"heightUnit": {
+			"type": "string",
+			"default": "px"
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": ["wide", "full"]
+	},
+	"textdomain": "image-comparison-slider",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js"
+}
