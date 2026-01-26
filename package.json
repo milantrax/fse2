@@ -3,10 +3,12 @@
     "version": "1.0.0",
     "scripts": {
         "sync": "node scripts/sync-theme-vars.js",
-        "build": "npm run sync && webpack --mode production",
-        "dev": "npm run sync && webpack --mode development --watch",
-        "build:blocks": "npm run build --workspaces",
-        "dev:blocks": "npm run dev --workspaces"
+        "build:theme": "webpack --mode production",
+        "build:blocks": "npm run build --workspaces --if-present",
+        "build": "npm run sync && npm run build:theme && npm run build:blocks",
+        "dev:theme": "webpack --mode development --watch",
+        "dev:blocks": "npm run start --workspaces --if-present",
+        "dev": "npm run sync && npm run dev:theme & npm run dev:blocks"
     },
     "workspaces": [
         "blocks/*"

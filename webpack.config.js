@@ -1,28 +1,12 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const glob = require('glob');
-const fs = require('fs');
-
-// Get all block directories
-const blockDirs = glob.sync('./blocks/*/');
-
-// Create entry points for all blocks
-const blockEntries = {};
-blockDirs.forEach(dir => {
-  const blockName = path.basename(dir);
-  const srcIndex = `./${path.join(dir, 'src/index.js')}`;
-  if (fs.existsSync(srcIndex)) {
-    blockEntries[`blocks/${blockName}/build/index`] = srcIndex;
-  }
-});
 
 module.exports = {
   entry: {
     'assets/build/main': [
         './assets/src/js/main.js',
         './assets/src/scss/main.scss'
-    ],
-    ...blockEntries
+    ]
   },
   output: {
     path: path.resolve(__dirname),

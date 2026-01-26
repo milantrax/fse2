@@ -108,6 +108,11 @@ class BlockRegistry
             return false;
         }
 
+        // If block.json is in build/, register from build/ directory
+        if (file_exists($blockPath . '/build/block.json')) {
+            $blockPath = $blockPath . '/build';
+        }
+
         register_block_type($blockPath);
         return true;
     }
@@ -120,6 +125,8 @@ class BlockRegistry
      */
     private function isValidBlock($blockPath)
     {
-        return file_exists($blockPath . '/block.json');
+        // Check for block.json in root or build/ subdirectory
+        return file_exists($blockPath . '/block.json') ||
+               file_exists($blockPath . '/build/block.json');
     }
 }
