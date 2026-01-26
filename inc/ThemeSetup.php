@@ -36,6 +36,7 @@ class ThemeSetup
     {
         add_action('after_setup_theme', [$this, 'setup']);
         add_action('init', [$this, 'registerPatternCategories']);
+        add_action('init', [$this, 'removeDefaultPatterns']);
     }
 
     /**
@@ -79,5 +80,19 @@ class ThemeSetup
         register_block_pattern_category('my-theme', [
             'label' => __('My Theme Patterns', 'my-fse-theme'),
         ]);
+    }
+
+    /**
+     * Remove default WordPress patterns
+     *
+     * Removes core WordPress patterns and remote pattern library,
+     * allowing only custom theme patterns.
+     *
+     * @return void
+     */
+    public function removeDefaultPatterns()
+    {
+        // Remove core block patterns
+        remove_theme_support('core-block-patterns');
     }
 }
