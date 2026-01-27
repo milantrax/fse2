@@ -32,16 +32,18 @@ class Blocks
     private static $blocks;
 
     /**
-     * Initialize static properties
+     * Initialize hooks
      *
      * @return void
      */
-    private static function initProperties()
+    public static function init()
     {
         if (self::$blocksDir === null) {
             self::$blocksDir = get_template_directory() . '/blocks';
             self::$blocks = self::getBlocksFromDirectory();
         }
+
+        add_action('init', [__CLASS__, 'registerBlocks']);
     }
 
     /**
@@ -72,17 +74,6 @@ class Blocks
         }
 
         return $blocks;
-    }
-
-    /**
-     * Initialize hooks
-     *
-     * @return void
-     */
-    public static function init()
-    {
-        self::initProperties();
-        add_action('init', [__CLASS__, 'registerBlocks']);
     }
 
     /**

@@ -39,27 +39,18 @@ class Assets
     private static $version;
 
     /**
-     * Initialize static properties
-     *
-     * @return void
-     */
-    private static function initProperties()
-    {
-        if (self::$assetsDir === null) {
-            self::$assetsDir = get_template_directory() . '/assets/build';
-            self::$assetsUri = get_template_directory_uri() . '/assets/build';
-            self::$version = wp_get_theme()->get('Version');
-        }
-    }
-
-    /**
      * Initialize hooks
      *
      * @return void
      */
     public static function init()
     {
-        self::initProperties();
+        if (self::$assetsDir === null) {
+            self::$assetsDir = get_template_directory() . '/assets/build';
+            self::$assetsUri = get_template_directory_uri() . '/assets/build';
+            self::$version = wp_get_theme()->get('Version');
+        }
+
         add_action('wp_enqueue_scripts', [__CLASS__, 'enqueueAssets']);
     }
 
