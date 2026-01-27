@@ -1,23 +1,38 @@
 #!/usr/bin/env node
 
+/**
+ * Theme Styles Synchronizer
+ *
+ * Generates SCSS variable files from WordPress theme.json configuration modules.
+ * Reads modular JSON config files (color, typography, spacing, shadow, layout) and converts
+ * them into SCSS variables for use in stylesheets. This ensures theme configuration stays
+ * synchronized between WordPress theme.json and custom SCSS files.
+ *
+ * Generated files:
+ * - _colors.scss: Color palette, duotone, and color pairings
+ * - _typography.scss: Font families, sizes, line heights, and weights
+ * - _spacing.scss: Spacing sizes and custom spacing values
+ * - _shadows.scss: Shadow presets
+ * - _radius.scss: Border radius values
+ * - _layout.scss: Content and wide layout sizes
+ *
+ * Usage: node build/sync-theme-styles.js
+ */
+
 const fs = require('fs');
 const path = require('path');
 
-// Paths
 const configDir = path.join(__dirname, '../assets/src/config');
 const variablesDir = path.join(__dirname, '../assets/src/scss/variables');
 
-// Helper to convert kebab-case to camelCase for variable names
 const kebabToCamel = (str) => {
     return str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
 };
 
-// Helper to convert slug to valid SCSS variable name
 const slugToVar = (slug) => {
     return slug.replace(/-/g, '-');
 };
 
-// Generate colors file
 const generateColorsFile = (palette, duotone, colorPairings) => {
     let content = '// Color Palette\n';
 
@@ -46,7 +61,6 @@ const generateColorsFile = (palette, duotone, colorPairings) => {
     return content;
 };
 
-// Generate typography file
 const generateTypographyFile = (fontFamilies, fontSizes) => {
     let content = '// Font Families\n';
 
@@ -77,7 +91,6 @@ const generateTypographyFile = (fontFamilies, fontSizes) => {
     return content;
 };
 
-// Generate spacing file
 const generateSpacingFile = (spacingSizes, customSpace) => {
     let content = '// Spacing Sizes\n';
 
@@ -89,7 +102,6 @@ const generateSpacingFile = (spacingSizes, customSpace) => {
         content += '\n// Custom Spacing\n';
         Object.entries(customSpace).forEach(([key, value]) => {
             const varName = key.replace(/([A-Z])/g, '-$1').toLowerCase();
-            // Convert var() references to SCSS variables
             const scssValue = value.replace(/var\(--wp--preset--spacing--([^)]+)\)/g, (match, slug) => {
                 return `$space-${slugToVar(slug)}`;
             });
@@ -103,7 +115,6 @@ const generateSpacingFile = (spacingSizes, customSpace) => {
     return content;
 };
 
-// Generate shadows file
 const generateShadowsFile = (shadowPresets) => {
     let content = '// Shadow Presets\n';
 
@@ -114,7 +125,6 @@ const generateShadowsFile = (shadowPresets) => {
     return content;
 };
 
-// Generate radius file
 const generateRadiusFile = (customRadius) => {
     let content = '// Border Radius\n';
 
@@ -127,7 +137,6 @@ const generateRadiusFile = (customRadius) => {
     return content;
 };
 
-// Generate layout file
 const generateLayoutFile = (layout) => {
     let content = '// Layout Sizes\n';
 
@@ -141,7 +150,6 @@ const generateLayoutFile = (layout) => {
     return content;
 };
 
-// Helper to read and parse JSON file
 const readJsonFile = (filePath) => {
     try {
         const content = fs.readFileSync(filePath, 'utf-8');
@@ -152,16 +160,13 @@ const readJsonFile = (filePath) => {
     }
 };
 
-// Main function
 const syncThemeVars = () => {
     console.log('[SYNC] Syncing theme config modules to SCSS variables...\n');
 
-    // Ensure variables directory exists
     if (!fs.existsSync(variablesDir)) {
         fs.mkdirSync(variablesDir, { recursive: true });
     }
 
-    // Read modular config files
     const colorConfig = readJsonFile(path.join(configDir, 'settings', 'color.json'));
     const customConfig = readJsonFile(path.join(configDir, 'settings', 'custom.json'));
     const typographyConfig = readJsonFile(path.join(configDir, 'settings', 'typography.json'));
@@ -169,7 +174,6 @@ const syncThemeVars = () => {
     const shadowConfig = readJsonFile(path.join(configDir, 'settings', 'shadow.json'));
     const layoutConfig = readJsonFile(path.join(configDir, 'settings', 'layout.json'));
 
-    // Generate each file
     const files = [
         {
             name: '_colors.scss',
@@ -207,7 +211,6 @@ const syncThemeVars = () => {
         }
     ];
 
-    // Write files
     files.forEach(file => {
         const filePath = path.join(variablesDir, file.name);
         fs.writeFileSync(filePath, file.content);
@@ -217,7 +220,6 @@ const syncThemeVars = () => {
     console.log('\n[DONE] Theme variables synced successfully!\n');
 };
 
-// Run the script
 try {
     syncThemeVars();
 } catch (error) {

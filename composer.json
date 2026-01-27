@@ -1,5 +1,5 @@
 {
-    "name": "fse2",
+    "name": "milantrax/fse2",
     "description": "A modern WordPress Full-Site Editing theme with custom blocks",
     "type": "wordpress-theme",
     "license": "GPL-2.0-or-later",
@@ -10,8 +10,7 @@
         }
     ],
     "require": {
-        "php": ">=7.4",
-        "wordpress/wp-ai-client": "^0.2.1"
+        "php": ">=7.4"
     },
     "autoload": {
         "psr-4": {
