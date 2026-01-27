@@ -154,7 +154,7 @@ const readJsonFile = (filePath) => {
 
 // Main function
 const syncThemeVars = () => {
-    console.log('🔄 Syncing theme config modules to SCSS variables...\n');
+    console.log('[SYNC] Syncing theme config modules to SCSS variables...\n');
 
     // Ensure variables directory exists
     if (!fs.existsSync(variablesDir)) {
@@ -211,16 +211,16 @@ const syncThemeVars = () => {
     files.forEach(file => {
         const filePath = path.join(variablesDir, file.name);
         fs.writeFileSync(filePath, file.content);
-        console.log(`✅ Generated ${file.name}`);
+        console.log(`[OK] Generated ${file.name}`);
     });
 
-    console.log('\n✨ Theme variables synced successfully!\n');
+    console.log('\n[DONE] Theme variables synced successfully!\n');
 };
 
 // Run the script
 try {
     syncThemeVars();
 } catch (error) {
-    console.error('❌ Error syncing theme variables:', error.message);
+    console.error('[ERROR] Error syncing theme variables:', error.message);
     process.exit(1);
 }

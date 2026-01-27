@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "scripts": {
         "build:theme-json": "node build/build-theme-json.js",
-        "sync": "node build/sync-theme-vars.js",
+        "sync": "node build/sync-theme-styles.js",
         "build:theme": "webpack --mode production",
         "build:blocks": "npm run build --workspaces --if-present",
         "build": "npm run build:theme-json && npm run sync && npm run build:theme && npm run build:blocks",

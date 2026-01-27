@@ -45,13 +45,13 @@ const isObject = (item) => {
 
 // Build theme.json
 const buildThemeJson = () => {
-    console.log('🔨 Building theme.json from modules...\n');
+    console.log('[BUILD] Building theme.json from modules...\n');
 
     // Start with base configuration
     const themeJson = readJsonFile(path.join(configDir, 'base.json'));
 
     if (!themeJson) {
-        console.error('❌ Failed to read base.json');
+        console.error('[ERROR] Failed to read base.json');
         process.exit(1);
     }
 
@@ -59,14 +59,14 @@ const buildThemeJson = () => {
     const customTemplates = readJsonFile(path.join(configDir, 'customTemplates.json'));
     if (customTemplates) {
         themeJson.customTemplates = customTemplates;
-        console.log('✅ Added customTemplates');
+        console.log('[OK] Added customTemplates');
     }
 
     // Add templateParts
     const templateParts = readJsonFile(path.join(configDir, 'templateParts.json'));
     if (templateParts) {
         themeJson.templateParts = templateParts;
-        console.log('✅ Added templateParts');
+        console.log('[OK] Added templateParts');
     }
 
     // Build settings
@@ -76,7 +76,7 @@ const buildThemeJson = () => {
     const baseSettings = readJsonFile(path.join(configDir, 'settings.json'));
     if (baseSettings) {
         themeJson.settings = { ...baseSettings };
-        console.log('✅ Added base settings');
+        console.log('[OK] Added base settings');
     }
 
     // Add settings modules
@@ -86,7 +86,7 @@ const buildThemeJson = () => {
         const moduleData = readJsonFile(modulePath);
         if (moduleData) {
             themeJson.settings[module] = moduleData;
-            console.log(`✅ Added settings/${module}`);
+            console.log(`[OK] Added settings/${module}`);
         }
     });
 
@@ -97,7 +97,7 @@ const buildThemeJson = () => {
     const baseStyles = readJsonFile(path.join(configDir, 'styles.json'));
     if (baseStyles && Object.keys(baseStyles).length > 0) {
         themeJson.styles = { ...baseStyles };
-        console.log('✅ Added base styles');
+        console.log('[OK] Added base styles');
     }
 
     // Add styles modules
@@ -107,16 +107,16 @@ const buildThemeJson = () => {
         const moduleData = readJsonFile(modulePath);
         if (moduleData) {
             themeJson.styles[module] = moduleData;
-            console.log(`✅ Added styles/${module}`);
+            console.log(`[OK] Added styles/${module}`);
         }
     });
 
     // Write the combined theme.json
     try {
         fs.writeFileSync(themeJsonPath, JSON.stringify(themeJson, null, 4));
-        console.log('\n✨ theme.json built successfully!\n');
+        console.log('\n[DONE] theme.json built successfully!\n');
     } catch (error) {
-        console.error('❌ Error writing theme.json:', error.message);
+        console.error('[ERROR] Error writing theme.json:', error.message);
         process.exit(1);
     }
 };
@@ -125,6 +125,6 @@ const buildThemeJson = () => {
 try {
     buildThemeJson();
 } catch (error) {
-    console.error('❌ Error building theme.json:', error.message);
+    console.error('[ERROR] Error building theme.json:', error.message);
     process.exit(1);
 }
