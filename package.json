@@ -3,13 +3,14 @@
     "version": "0.1.0",
     "scripts": {
         "build:theme-json": "node build/build-theme-json.js",
+        "build:images": "node build/build-images.js",
         "sync": "node build/sync-theme-styles.js",
         "build:theme": "webpack --mode production",
         "build:blocks": "npm run build --workspaces --if-present",
-        "build": "npm run build:theme-json && npm run sync && npm run build:theme && npm run build:blocks",
+        "build": "npm run build:theme-json && npm run build:images && npm run sync && npm run build:theme && npm run build:blocks",
         "dev:theme": "webpack --mode development --watch",
         "dev:blocks": "npm run start --workspaces --if-present",
-        "dev": "npm run build:theme-json && npm run sync && npm run dev:theme & npm run dev:blocks"
+        "dev": "npm run build:theme-json && npm run build:images && npm run sync && npm run dev:theme & npm run dev:blocks"
     },
     "workspaces": [
         "blocks/*"
@@ -21,6 +22,10 @@
         "babel-loader": "^9.1.3",
         "css-loader": "^6.8.1",
         "glob": "^10.3.10",
+        "imagemin": "^7.0.1",
+        "imagemin-mozjpeg": "^9.0.0",
+        "imagemin-pngquant": "^8.0.0",
+        "imagemin-svgo": "^9.0.0",
         "mini-css-extract-plugin": "^2.7.6",
         "postcss": "^8.4.32",
         "postcss-loader": "^7.3.3",
