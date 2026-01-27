@@ -2,7 +2,7 @@
     "name": "my-fse-theme",
     "version": "1.0.0",
     "scripts": {
-        "sync": "node scripts/sync-theme-vars.js",
+        "sync": "node build/sync-theme-vars.js",
         "build:theme": "webpack --mode production",
         "build:blocks": "npm run build --workspaces --if-present",
         "build": "npm run sync && npm run build:theme && npm run build:blocks",

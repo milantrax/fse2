@@ -263,5 +263,3 @@ templateLock="all"
 
 - **Never edit parts of the code which the user has updated during the process.**
 - Always work with the latest version of the code.
-
-
