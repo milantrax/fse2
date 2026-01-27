@@ -4,9 +4,9 @@
  * theme.json Builder
  *
  * Compiles modular configuration files from assets/src/config into a single theme.json file.
- * This script reads base configuration, custom templates, template parts, and modular settings
- * (color, custom, layout, shadow, spacing, typography) and styles (blocks, color, elements,
- * spacing, typography), merging them into the WordPress theme.json format.
+ * This script reads base configuration, patterns, custom templates, template parts, and modular
+ * settings (color, custom, layout, shadow, spacing, typography) and styles (blocks, color,
+ * elements, spacing, typography), merging them into the WordPress theme.json format.
  *
  * Usage: node build/build-theme-json.js
  */
@@ -59,6 +59,12 @@ const buildThemeJson = () => {
     if (!themeJson) {
         console.error('[ERROR] Failed to read base.json');
         process.exit(1);
+    }
+
+    const patterns = readJsonFile(path.join(configDir, 'patterns.json'));
+    if (patterns) {
+        themeJson.patterns = patterns;
+        console.log('[OK] Added patterns');
     }
 
     const customTemplates = readJsonFile(path.join(configDir, 'customTemplates.json'));
