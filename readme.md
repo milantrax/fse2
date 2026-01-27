@@ -2,6 +2,8 @@
 
 A modern Full-Site Editing WordPress theme with automatic block registration and custom pattern support.
 
+![FSE2 Theme Screenshot](screenshot.png)
+
 ## Project Structure
 
 ```
@@ -13,12 +15,11 @@ fse2/
 ├── package.json                 # Build dependencies
 │
 ├── inc/                         # PHP classes
-│   ├── AssetManager.php         # Asset compilation and enqueuing
-│   ├── BlockRegistry.php        # Automatic block registration
-│   ├── ThemeSetup.php           # Theme configuration
-│   ├── MediaHandler.php         # Media handling
-│   ├── GlobalStylesCommand.php  # WP-CLI commands
-│   └── CLIBootstrap.php         # WP-CLI initialization
+│   ├── Assets.php               # Asset compilation and enqueuing
+│   ├── Blocks.php               # Automatic block registration
+│   ├── Settings.php             # Theme configuration
+│   ├── Uploads.php              # Media handling and SVG support
+│   └── CLI.php                  # WP-CLI commands
 │
 ├── assets/
 │   ├── src/
@@ -54,7 +55,7 @@ fse2/
 
 ### Automatic Block Registration
 
-The theme uses the `BlockRegistry` class to automatically discover and register all blocks in the `/blocks` directory. This means:
+The theme uses the `Blocks` class to automatically discover and register all blocks in the `/blocks` directory. This means:
 
 - **Drop-in Blocks**: Simply add a new block folder to `/blocks` and it will be automatically registered
 - **No manual registration**: No need to update `functions.php` when adding new blocks
@@ -63,7 +64,7 @@ The theme uses the `BlockRegistry` class to automatically discover and register 
 
 ### Custom Pattern Support
 
-The `ThemeSetup` class handles pattern configuration:
+The `Settings` class handles pattern configuration:
 
 - **Custom-only patterns**: Default WordPress core patterns are hidden
 - **Theme patterns**: Only custom patterns from `/patterns` directory are shown
@@ -71,8 +72,9 @@ The `ThemeSetup` class handles pattern configuration:
 
 ### Modern Architecture
 
-- **OOP structure**: Organized into namespaced PHP classes
+- **OOP structure**: Organized into namespaced PHP classes with static methods
 - **Composer autoloading**: PSR-4 autoloading for clean code organization
+- **Static class pattern**: All classes use static methods for efficient initialization
 - **Asset management**: Centralized asset compilation and enqueuing
 - **WP-CLI integration**: Custom CLI commands for global styles management
 
@@ -128,7 +130,7 @@ npm run dev
 
 ### Theme Assets
 
-The `AssetManager` class handles compilation and enqueuing of theme assets:
+The `Assets` class handles compilation and enqueuing of theme assets:
 
 - **Source files**: Located in `/assets/src/`
 - **Compiled files**: Output to `/assets/build/`
@@ -210,13 +212,64 @@ wp global-styles <command>
 
 ### Core Components
 
-The theme initializes these core components in `functions.php`:
+The theme initializes these core components in `functions.php` using static method calls:
 
-- **BlockRegistry**: Automatic block discovery and registration
-- **AssetManager**: Asset compilation and enqueuing
-- **ThemeSetup**: Theme supports and pattern configuration
-- **MediaHandler**: Media handling functionality
-- **CLIBootstrap**: WP-CLI command registration
+```php
+use FSE2\Blocks;
+use FSE2\Assets;
+use FSE2\Settings;
+use FSE2\Uploads;
+use FSE2\CLI;
+
+Blocks::init();
+Assets::init();
+Settings::init();
+Uploads::init();
+
+if (defined('WP_CLI') && WP_CLI) {
+    CLI::init();
+}
+```
+
+**Component Overview:**
+
+- **Blocks**: Automatic block discovery and registration
+- **Assets**: Asset compilation and enqueuing
+- **Settings**: Theme supports and pattern configuration
+- **Uploads**: Media handling and SVG upload support
+- **CLI**: WP-CLI command registration
+
+### Static Class Architecture
+
+All theme classes use static methods for efficient initialization and execution:
+
+- **Single entry point**: Each class has an `init()` static method that serves as the entry point
+- **Property initialization**: Static properties are initialized within the `init()` method
+- **Hook registration**: WordPress hooks and filters are registered using `[__CLASS__, 'methodName']` syntax
+- **No instantiation**: Classes don't need to be instantiated, called directly via `ClassName::init()`
+
+**Example class structure:**
+
+```php
+class Example
+{
+    private static $property;
+
+    public static function init()
+    {
+        // Initialize properties
+        self::$property = 'value';
+
+        // Register hooks
+        add_action('hook_name', [__CLASS__, 'callback']);
+    }
+
+    public static function callback()
+    {
+        // Method implementation
+    }
+}
+```
 
 ### Pattern Library
 
