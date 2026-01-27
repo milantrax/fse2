@@ -14,6 +14,7 @@ Thumbs.db
 # IDE/Editor
 .idea/
 .vscode/
+.claude/
 *.swp
 *.swo
 
@@ -30,3 +31,4 @@ assets/build
 # Global styles backups
 backups/theme.json.backup.*
 backups
+AGENTS.md
