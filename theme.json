@@ -82,12 +82,12 @@
                     "slug": "blue"
                 },
                 {
-                    "color": "#c2b100",
+                    "color": "#ffea00",
                     "name": "Lemon",
                     "slug": "lemon"
                 },
                 {
-                    "color": "#00976f",
+                    "color": "#00c38f",
                     "name": "Aquamarine",
                     "slug": "aquamarine"
                 },
@@ -253,7 +253,7 @@
                             "fontStyle": "normal",
                             "fontWeight": "300 700",
                             "src": [
-                                "file:./assets/fonts/cormorant-garamond-light/cormorant-garamond-light-300-700-normal.woff2"
+                                "file:./assets/fonts/cormorant-garamond-light/Cormorant-Garamond.woff2"
                             ]
                         }
                     ]
@@ -268,7 +268,7 @@
                             "fontStyle": "normal",
                             "fontWeight": "300",
                             "src": [
-                                "file:./assets/fonts/cormorant-garamond/cormorant-garamond-300-normal.woff2"
+                                "file:./assets/fonts/cormorant-garamond/CormorantGaramond-Light.woff2"
                             ]
                         }
                     ]
@@ -283,7 +283,7 @@
                             "fontStyle": "normal",
                             "fontWeight": "200 800",
                             "src": [
-                                "file:./assets/fonts/manrope-extralight/manrope-extralight-200-800-normal.woff2"
+                                "file:./assets/fonts/manrope-extralight/Manrope.woff2"
                             ]
                         }
                     ]
@@ -298,13 +298,33 @@
                             "fontStyle": "normal",
                             "fontWeight": "200",
                             "src": [
-                                "file:./assets/fonts/manrope/manrope-200-normal.woff2"
+                                "file:./assets/fonts/manrope/Manrope-ExtraLight.woff2"
                             ]
                         }
                     ]
                 }
             ],
             "fontSizes": [
+                {
+                    "name": "Small",
+                    "size": "13px",
+                    "slug": "small"
+                },
+                {
+                    "name": "Medium",
+                    "size": "20px",
+                    "slug": "medium"
+                },
+                {
+                    "name": "Large",
+                    "size": "36px",
+                    "slug": "large"
+                },
+                {
+                    "name": "Extra Large",
+                    "size": "42px",
+                    "slug": "x-large"
+                },
                 {
                     "name": "Body Small",
                     "size": "1rem",
@@ -331,30 +351,31 @@
                     "slug": "h6"
                 },
                 {
+                    "fluid": true,
                     "name": "H5",
                     "size": "clamp(1.25rem, 1.6vw, 1.75rem)",
                     "slug": "h5"
                 },
                 {
-                    "name": "H4",
+                    "slug": "h4",
                     "size": "clamp(1.5rem, 2vw, 2rem)",
-                    "slug": "h4"
+                    "name": "H4"
                 },
                 {
-                    "name": "H3",
+                    "slug": "h3",
                     "size": "clamp(1.75rem, 2.4vw, 2.25rem)",
-                    "slug": "h3"
+                    "name": "H3"
                 },
                 {
-                    "name": "H2",
+                    "slug": "h2",
                     "size": "clamp(2rem, 3.2vw, 3rem)",
-                    "slug": "h2"
+                    "name": "H2"
                 },
                 {
-                    "fluid": true,
-                    "name": "H1",
+                    "slug": "h1",
                     "size": "clamp(2.1875rem, 4.2vw, 4.375rem)",
-                    "slug": "h1"
+                    "name": "H1",
+                    "fluid": true
                 }
             ]
         }

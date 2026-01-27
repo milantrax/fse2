@@ -10,10 +10,10 @@ $space-xxxl: 120px;
 $space-responsive-xl: clamp(40px, 6vw, 80px);
 
 // Custom Spacing
-$space-container-padding: clamp(20px, 4vw, 30px);
-$space-layout-mobile: $space-xxl;
-$space-layout-desktop: $space-xxxl;
 $space-block-y: $space-responsive-xl;
+$space-container-padding: clamp(20px, 4vw, 30px);
+$space-layout-desktop: $space-xxxl;
+$space-layout-mobile: $space-xxl;
 
 // Spacing Units
 $spacing-units: (px, em, rem, vh, vw, '%');

@@ -1,22 +1,26 @@
 // Color Palette
-$color-primary: #1F005E;
+$color-primary: #000000;
 $color-secondary: #1F005E;
-$color-white: #FAFAFA;
 $color-blueberry: #1F005E;
 $color-blue: #151AD2;
-$color-lemon: #FFEE20;
-$color-aquamarine: #00FFBC;
+$color-lemon: #ffea00;
+$color-aquamarine: #00c38f;
 $color-light-blue: #EAEFF1;
 $color-barely-white: #FAFAFA;
 $color-pure-white: #FFFFFF;
-$color-black: #000000;
 $color-error: #FD0000;
 
 // Duotone
 $duotone-grayscale: (#000000, #FFFFFF);
 
 // Color Pairings
-$color-pairing-on-light-blue: (
+$color-pairing-on-aquamarine: (
+    foreground: $color-pure-white,
+    link: $color-pure-white,
+    link-hover: $color-pure-white
+);
+
+$color-pairing-on-barely-white: (
     foreground: $color-blueberry,
     link: $color-blueberry,
     link-hover: $color-blueberry
@@ -34,15 +38,9 @@ $color-pairing-on-lemon: (
     link-hover: $color-blueberry
 );
 
-$color-pairing-on-barely-white: (
+$color-pairing-on-light-blue: (
     foreground: $color-blueberry,
     link: $color-blueberry,
     link-hover: $color-blueberry
-);
-
-$color-pairing-on-aquamarine: (
-    foreground: $color-pure-white,
-    link: $color-pure-white,
-    link-hover: $color-pure-white
 );
 

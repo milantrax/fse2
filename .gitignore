@@ -29,3 +29,4 @@ assets/build
 
 # Global styles backups
 backups/theme.json.backup.*
+backups
