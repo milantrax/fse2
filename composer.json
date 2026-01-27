@@ -1,12 +1,12 @@
 {
-    "name": "granola/fse2-theme",
-    "description": "A modern WordPress FSE theme with custom blocks",
+    "name": "fse2",
+    "description": "A modern WordPress Full-Site Editing theme with custom blocks",
     "type": "wordpress-theme",
     "license": "GPL-2.0-or-later",
     "authors": [
         {
-            "name": "Granola",
-            "email": "info@granola.org"
+            "name": "Milan Trajkovic",
+            "email": "milantrax@gmail.com"
         }
     ],
     "require": {

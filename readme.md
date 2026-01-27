@@ -1,4 +1,4 @@
-# FSE2 Theme
+# FSE2
 
 A modern Full-Site Editing WordPress theme with automatic block registration and custom pattern support.
 

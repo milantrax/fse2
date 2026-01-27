@@ -1,36 +1,32 @@
 <?php
 /**
- * Theme Functions - Bootstrap File
+ * Theme Functions
  *
  * @package FSE2
  */
 
-// Composer autoload
 if (file_exists(__DIR__ . '/vendor/autoload.php')) {
     require_once __DIR__ . '/vendor/autoload.php';
 }
 
-// Use statements
-use FSE2\BlockRegistry;
-use FSE2\AssetManager;
-use FSE2\ThemeSetup;
-use FSE2\MediaHandler;
-use FSE2\CLIBootstrap;
+use FSE2\Blocks;
+use FSE2\Assets;
+use FSE2\Settings;
+use FSE2\Uploads;
+use FSE2\CLI;
 
-// Initialize core theme components
-$block_registry = new BlockRegistry();
-$block_registry->init();
+$blocks = new Blocks();
+$blocks->init();
 
-$asset_manager = new AssetManager();
-$asset_manager->init();
+$assets = new Assets();
+$assets->init();
 
-$theme_setup = new ThemeSetup();
-$theme_setup->init();
+$settings = new Settings();
+$settings->init();
 
-$media_handler = new MediaHandler();
-$media_handler->init();
+$uploads = new Uploads();
+$uploads->init();
 
-// Initialize WP-CLI commands
 if (defined('WP_CLI') && WP_CLI) {
-    CLIBootstrap::init();
+    CLI::init();
 }
