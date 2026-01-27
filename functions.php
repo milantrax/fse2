@@ -2,7 +2,7 @@
 /**
  * Theme Functions - Bootstrap File
  *
- * @package Granola\FSE2
+ * @package FSE2
  */
 
 // Composer autoload
@@ -11,11 +11,11 @@ if (file_exists(__DIR__ . '/vendor/autoload.php')) {
 }
 
 // Use statements
-use Granola\FSE2\BlockRegistry;
-use Granola\FSE2\AssetManager;
-use Granola\FSE2\ThemeSetup;
-use Granola\FSE2\MediaHandler;
-use Granola\FSE2\CLIBootstrap;
+use FSE2\BlockRegistry;
+use FSE2\AssetManager;
+use FSE2\ThemeSetup;
+use FSE2\MediaHandler;
+use FSE2\CLIBootstrap;
 
 // Initialize core theme components
 $block_registry = new BlockRegistry();

@@ -4,11 +4,11 @@
  *
  * Handles theme configuration and block pattern registration.
  *
- * @package Granola\FSE2
+ * @package FSE2
  * @since 1.0.0
  */
 
-namespace Granola\FSE2;
+namespace FSE2;
 
 /**
  * Class ThemeSetup

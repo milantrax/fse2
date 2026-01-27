@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Granola\\FSE2\\": "inc/"
+            "FSE2\\": "inc/"
         }
     },
     "config": {

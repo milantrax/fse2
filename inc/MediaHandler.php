@@ -4,11 +4,11 @@
  *
  * Handles media uploads and mime types (SVG support).
  *
- * @package Granola\FSE2
+ * @package FSE2
  * @since 1.0.0
  */
 
-namespace Granola\FSE2;
+namespace FSE2;
 
 /**
  * Class MediaHandler
