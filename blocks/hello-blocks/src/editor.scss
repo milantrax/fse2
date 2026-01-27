@@ -1,0 +1,14 @@
+/**
+ * The following styles get applied inside the editor only.
+ */
+
+.wp-block-fse2-hello-blocks {
+	min-height: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	.hello-blocks__message {
+		width: 100%;
+	}
+}

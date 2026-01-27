@@ -1,7 +1,7 @@
 {
-    "name": "image-comparison-slider",
+    "name": "hello-blocks",
     "version": "0.1.0",
-    "description": "Compare two images with an interactive draggable slider",
+    "description": "A simple demo block that displays a hello message.",
     "author": "Milan T",
     "license": "GPL-2.0-or-later",
     "main": "build/index.js",
@@ -15,6 +15,6 @@
         "start": "wp-scripts start --blocks-manifest"
     },
     "devDependencies": {
-        "@wordpress/scripts": "^30.15.0"
+        "@wordpress/scripts": "^31.3.0"
     }
 }
