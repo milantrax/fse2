@@ -18,25 +18,15 @@ namespace FSE2;
 class Settings
 {
     /**
-     * Constructor
-     *
-     * Initializes the theme setup.
-     */
-    public function __construct()
-    {
-        // Initialization code if needed
-    }
-
-    /**
      * Initialize hooks
      *
      * @return void
      */
-    public function init()
+    public static function init()
     {
-        add_action('after_setup_theme', [$this, 'setup']);
-        add_action('init', [$this, 'registerPatternCategories']);
-        add_action('init', [$this, 'removeDefaultPatterns']);
+        add_action('after_setup_theme', [__CLASS__, 'setup']);
+        add_action('init', [__CLASS__, 'registerPatternCategories']);
+        add_action('init', [__CLASS__, 'removeDefaultPatterns']);
     }
 
     /**
@@ -46,10 +36,10 @@ class Settings
      *
      * @return void
      */
-    public function setup()
+    public static function setup()
     {
         load_theme_textdomain('fse2', get_template_directory() . '/languages');
-        
+
         add_theme_support('automatic-feed-links');
         add_theme_support('title-tag');
         add_theme_support('post-thumbnails');
@@ -64,7 +54,7 @@ class Settings
      *
      * @return void
      */
-    public function registerPatternCategories()
+    public static function registerPatternCategories()
     {
         register_block_pattern_category('my-theme', [
             'label' => __('My Theme Patterns', 'fse2'),
@@ -79,7 +69,7 @@ class Settings
      *
      * @return void
      */
-    public function removeDefaultPatterns()
+    public static function removeDefaultPatterns()
     {
         remove_theme_support('core-block-patterns');
     }

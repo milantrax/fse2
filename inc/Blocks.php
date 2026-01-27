@@ -22,24 +22,26 @@ class Blocks
      *
      * @var string
      */
-    private $blocksDir;
+    private static $blocksDir;
 
     /**
      * Block names to register
      *
      * @var array
      */
-    private $blocks;
+    private static $blocks;
 
     /**
-     * Constructor
+     * Initialize static properties
      *
-     * Initializes the block registry with default configuration.
+     * @return void
      */
-    public function __construct()
+    private static function initProperties()
     {
-        $this->blocksDir = get_template_directory() . '/blocks';
-        $this->blocks = $this->getBlocksFromDirectory();
+        if (self::$blocksDir === null) {
+            self::$blocksDir = get_template_directory() . '/blocks';
+            self::$blocks = self::getBlocksFromDirectory();
+        }
     }
 
     /**
@@ -47,24 +49,24 @@ class Blocks
      *
      * @return array Array of block directory names.
      */
-    private function getBlocksFromDirectory()
+    private static function getBlocksFromDirectory()
     {
         $blocks = [];
 
-        if (!is_dir($this->blocksDir)) {
+        if (!is_dir(self::$blocksDir)) {
             return $blocks;
         }
 
-        $items = scandir($this->blocksDir);
+        $items = scandir(self::$blocksDir);
 
         foreach ($items as $item) {
             if ($item === '.' || $item === '..') {
                 continue;
             }
 
-            $blockPath = $this->blocksDir . '/' . $item;
+            $blockPath = self::$blocksDir . '/' . $item;
 
-            if (is_dir($blockPath) && $this->isValidBlock($blockPath)) {
+            if (is_dir($blockPath) && self::isValidBlock($blockPath)) {
                 $blocks[] = $item;
             }
         }
@@ -77,9 +79,10 @@ class Blocks
      *
      * @return void
      */
-    public function init()
+    public static function init()
     {
-        add_action('init', [$this, 'registerBlocks']);
+        self::initProperties();
+        add_action('init', [__CLASS__, 'registerBlocks']);
     }
 
     /**
@@ -87,10 +90,10 @@ class Blocks
      *
      * @return void
      */
-    public function registerBlocks()
+    public static function registerBlocks()
     {
-        foreach ($this->blocks as $block) {
-            $this->registerBlock($block);
+        foreach (self::$blocks as $block) {
+            self::registerBlock($block);
         }
     }
 
@@ -100,11 +103,11 @@ class Blocks
      * @param string $blockName Block directory name.
      * @return bool True if registered successfully.
      */
-    private function registerBlock($blockName)
+    private static function registerBlock($blockName)
     {
-        $blockPath = $this->blocksDir . '/' . $blockName;
+        $blockPath = self::$blocksDir . '/' . $blockName;
 
-        if (!$this->isValidBlock($blockPath)) {
+        if (!self::isValidBlock($blockPath)) {
             return false;
         }
 
@@ -123,7 +126,7 @@ class Blocks
      * @param string $blockPath Full path to block directory.
      * @return bool True if valid block directory.
      */
-    private function isValidBlock($blockPath)
+    private static function isValidBlock($blockPath)
     {
         // Check for block.json in root or build/ subdirectory
         return file_exists($blockPath . '/block.json') ||

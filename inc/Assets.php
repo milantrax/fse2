@@ -22,32 +22,34 @@ class Assets
      *
      * @var string
      */
-    private $assetsDir;
+    private static $assetsDir;
 
     /**
      * Assets URI
      *
      * @var string
      */
-    private $assetsUri;
+    private static $assetsUri;
 
     /**
      * Theme version
      *
      * @var string
      */
-    private $version;
+    private static $version;
 
     /**
-     * Constructor
+     * Initialize static properties
      *
-     * Initializes asset paths and theme version.
+     * @return void
      */
-    public function __construct()
+    private static function initProperties()
     {
-        $this->assetsDir = get_template_directory() . '/assets/build';
-        $this->assetsUri = get_template_directory_uri() . '/assets/build';
-        $this->version = wp_get_theme()->get('Version');
+        if (self::$assetsDir === null) {
+            self::$assetsDir = get_template_directory() . '/assets/build';
+            self::$assetsUri = get_template_directory_uri() . '/assets/build';
+            self::$version = wp_get_theme()->get('Version');
+        }
     }
 
     /**
@@ -55,9 +57,10 @@ class Assets
      *
      * @return void
      */
-    public function init()
+    public static function init()
     {
-        add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
+        self::initProperties();
+        add_action('wp_enqueue_scripts', [__CLASS__, 'enqueueAssets']);
     }
 
     /**
@@ -65,10 +68,10 @@ class Assets
      *
      * @return void
      */
-    public function enqueueAssets()
+    public static function enqueueAssets()
     {
-        $this->enqueueStyles();
-        $this->enqueueScripts();
+        self::enqueueStyles();
+        self::enqueueScripts();
     }
 
     /**
@@ -76,9 +79,9 @@ class Assets
      *
      * @return void
      */
-    private function enqueueStyles()
+    private static function enqueueStyles()
     {
-        $cssPath = $this->assetsDir . '/main.css';
+        $cssPath = self::$assetsDir . '/main.css';
 
         if (!file_exists($cssPath)) {
             return;
@@ -86,9 +89,9 @@ class Assets
 
         wp_enqueue_style(
             'my-fse-theme-styles',
-            $this->assetsUri . '/main.css',
+            self::$assetsUri . '/main.css',
             [],
-            $this->version
+            self::$version
         );
     }
 
@@ -97,9 +100,9 @@ class Assets
      *
      * @return void
      */
-    private function enqueueScripts()
+    private static function enqueueScripts()
     {
-        $jsPath = $this->assetsDir . '/main.js';
+        $jsPath = self::$assetsDir . '/main.js';
 
         if (!file_exists($jsPath)) {
             return;
@@ -107,9 +110,9 @@ class Assets
 
         wp_enqueue_script(
             'my-fse-theme-scripts',
-            $this->assetsUri . '/main.js',
+            self::$assetsUri . '/main.js',
             [],
-            $this->version,
+            self::$version,
             true
         );
     }

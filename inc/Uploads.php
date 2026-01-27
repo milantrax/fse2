@@ -18,24 +18,14 @@ namespace FSE2;
 class Uploads
 {
     /**
-     * Constructor
-     *
-     * Initializes the media handler.
-     */
-    public function __construct()
-    {
-        // Initialization code if needed
-    }
-
-    /**
      * Initialize hooks
      *
      * @return void
      */
-    public function init()
+    public static function init()
     {
-        add_filter('upload_mimes', [$this, 'enableSvgUpload']);
-        add_filter('wp_check_filetype_and_ext', [$this, 'fixSvgFiletypeCheck'], 10, 4);
+        add_filter('upload_mimes', [__CLASS__, 'enableSvgUpload']);
+        add_filter('wp_check_filetype_and_ext', [__CLASS__, 'fixSvgFiletypeCheck'], 10, 4);
     }
 
     /**
@@ -44,7 +34,7 @@ class Uploads
      * @param array $mimes Existing mime types.
      * @return array Modified mime types.
      */
-    public function enableSvgUpload($mimes)
+    public static function enableSvgUpload($mimes)
     {
         $mimes['svg'] = 'image/svg+xml';
         $mimes['svgz'] = 'image/svg+xml';
@@ -60,7 +50,7 @@ class Uploads
      * @param array  $mimes    Mime types.
      * @return array Modified file data.
      */
-    public function fixSvgFiletypeCheck($data, $file, $filename, $mimes)
+    public static function fixSvgFiletypeCheck($data, $file, $filename, $mimes)
     {
         $filetype = wp_check_filetype($filename, $mimes);
 

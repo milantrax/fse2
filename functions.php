@@ -15,17 +15,10 @@ use FSE2\Settings;
 use FSE2\Uploads;
 use FSE2\CLI;
 
-$blocks = new Blocks();
-$blocks->init();
-
-$assets = new Assets();
-$assets->init();
-
-$settings = new Settings();
-$settings->init();
-
-$uploads = new Uploads();
-$uploads->init();
+Blocks::init();
+Assets::init();
+Settings::init();
+Uploads::init();
 
 if (defined('WP_CLI') && WP_CLI) {
     CLI::init();
