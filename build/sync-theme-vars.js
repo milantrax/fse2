@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Paths
-const themeJsonPath = path.join(__dirname, '../theme.json');
+const configDir = path.join(__dirname, '../assets/src/config');
 const variablesDir = path.join(__dirname, '../assets/src/scss/variables');
 
 // Helper to convert kebab-case to camelCase for variable names
@@ -141,54 +141,69 @@ const generateLayoutFile = (layout) => {
     return content;
 };
 
+// Helper to read and parse JSON file
+const readJsonFile = (filePath) => {
+    try {
+        const content = fs.readFileSync(filePath, 'utf-8');
+        return JSON.parse(content);
+    } catch (error) {
+        console.error(`Error reading ${filePath}:`, error.message);
+        return null;
+    }
+};
+
 // Main function
 const syncThemeVars = () => {
-    console.log('🔄 Syncing theme.json to SCSS variables...\n');
-
-    // Read theme.json
-    const themeJson = JSON.parse(fs.readFileSync(themeJsonPath, 'utf-8'));
-    const settings = themeJson.settings;
+    console.log('🔄 Syncing theme config modules to SCSS variables...\n');
 
     // Ensure variables directory exists
     if (!fs.existsSync(variablesDir)) {
         fs.mkdirSync(variablesDir, { recursive: true });
     }
 
+    // Read modular config files
+    const colorConfig = readJsonFile(path.join(configDir, 'settings', 'color.json'));
+    const customConfig = readJsonFile(path.join(configDir, 'settings', 'custom.json'));
+    const typographyConfig = readJsonFile(path.join(configDir, 'settings', 'typography.json'));
+    const spacingConfig = readJsonFile(path.join(configDir, 'settings', 'spacing.json'));
+    const shadowConfig = readJsonFile(path.join(configDir, 'settings', 'shadow.json'));
+    const layoutConfig = readJsonFile(path.join(configDir, 'settings', 'layout.json'));
+
     // Generate each file
     const files = [
         {
             name: '_colors.scss',
             content: generateColorsFile(
-                settings.color.palette,
-                settings.color.duotone || [],
-                settings.custom?.colorPairings
+                colorConfig?.palette || [],
+                colorConfig?.duotone || [],
+                customConfig?.colorPairings
             )
         },
         {
             name: '_typography.scss',
             content: generateTypographyFile(
-                settings.typography.fontFamilies,
-                settings.typography.fontSizes
+                typographyConfig?.fontFamilies || [],
+                typographyConfig?.fontSizes || []
             )
         },
         {
             name: '_spacing.scss',
             content: generateSpacingFile(
-                settings.spacing.spacingSizes,
-                settings.custom?.space
+                spacingConfig?.spacingSizes || [],
+                customConfig?.space
             )
         },
         {
             name: '_shadows.scss',
-            content: generateShadowsFile(settings.shadow.presets)
+            content: generateShadowsFile(shadowConfig?.presets || [])
         },
         {
             name: '_radius.scss',
-            content: generateRadiusFile(settings.custom?.radius)
+            content: generateRadiusFile(customConfig?.radius)
         },
         {
             name: '_layout.scss',
-            content: generateLayoutFile(settings.layout)
+            content: generateLayoutFile(layoutConfig || {})
         }
     ];
 

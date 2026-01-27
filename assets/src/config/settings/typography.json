@@ -1,0 +1,123 @@
+{
+    "fluid": true,
+    "fontFamilies": [
+        {
+            "fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+            "name": "System Font",
+            "slug": "system"
+        },
+        {
+            "name": "Cormorant Garamond Light",
+            "slug": "cormorant-garamond-light",
+            "fontFamily": "\"Cormorant Garamond Light\"",
+            "fontFace": [
+                {
+                    "fontFamily": "\"Cormorant Garamond Light\"",
+                    "fontStyle": "normal",
+                    "fontWeight": "300 700",
+                    "src": [
+                        "file:./assets/fonts/cormorant-garamond-light/cormorant-garamond-light-300-700-normal.woff2"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Cormorant Garamond",
+            "slug": "cormorant-garamond",
+            "fontFamily": "\"Cormorant Garamond\"",
+            "fontFace": [
+                {
+                    "fontFamily": "\"Cormorant Garamond\"",
+                    "fontStyle": "normal",
+                    "fontWeight": "300",
+                    "src": [
+                        "file:./assets/fonts/cormorant-garamond/cormorant-garamond-300-normal.woff2"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Manrope ExtraLight",
+            "slug": "manrope-extralight",
+            "fontFamily": "\"Manrope ExtraLight\"",
+            "fontFace": [
+                {
+                    "fontFamily": "\"Manrope ExtraLight\"",
+                    "fontStyle": "normal",
+                    "fontWeight": "200 800",
+                    "src": [
+                        "file:./assets/fonts/manrope-extralight/manrope-extralight-200-800-normal.woff2"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Manrope",
+            "slug": "manrope",
+            "fontFamily": "Manrope",
+            "fontFace": [
+                {
+                    "fontFamily": "Manrope",
+                    "fontStyle": "normal",
+                    "fontWeight": "200",
+                    "src": [
+                        "file:./assets/fonts/manrope/manrope-200-normal.woff2"
+                    ]
+                }
+            ]
+        }
+    ],
+    "fontSizes": [
+        {
+            "name": "Body Small",
+            "size": "1rem",
+            "slug": "body-small"
+        },
+        {
+            "name": "Body",
+            "size": "1.125rem",
+            "slug": "body"
+        },
+        {
+            "name": "Body Large",
+            "size": "1.25rem",
+            "slug": "body-large"
+        },
+        {
+            "name": "Button",
+            "size": "1.125rem",
+            "slug": "button"
+        },
+        {
+            "name": "H6",
+            "size": "clamp(1.125rem, 1.2vw, 1.5rem)",
+            "slug": "h6"
+        },
+        {
+            "name": "H5",
+            "size": "clamp(1.25rem, 1.6vw, 1.75rem)",
+            "slug": "h5"
+        },
+        {
+            "name": "H4",
+            "size": "clamp(1.5rem, 2vw, 2rem)",
+            "slug": "h4"
+        },
+        {
+            "name": "H3",
+            "size": "clamp(1.75rem, 2.4vw, 2.25rem)",
+            "slug": "h3"
+        },
+        {
+            "name": "H2",
+            "size": "clamp(2rem, 3.2vw, 3rem)",
+            "slug": "h2"
+        },
+        {
+            "fluid": true,
+            "name": "H1",
+            "size": "clamp(2.1875rem, 4.2vw, 4.375rem)",
+            "slug": "h1"
+        }
+    ]
+}

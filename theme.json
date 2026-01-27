@@ -24,8 +24,26 @@
             "title": "Page without Title"
         }
     ],
+    "templateParts": [
+        {
+            "area": "header",
+            "name": "header",
+            "title": "Header"
+        },
+        {
+            "area": "footer",
+            "name": "footer",
+            "title": "Footer"
+        },
+        {
+            "area": "uncategorized",
+            "name": "sidebar",
+            "title": "Sidebar"
+        }
+    ],
     "settings": {
         "appearanceTools": true,
+        "useRootPaddingAwareAlignments": true,
         "color": {
             "customDuotone": false,
             "customGradient": false,
@@ -339,8 +357,7 @@
                     "slug": "h1"
                 }
             ]
-        },
-        "useRootPaddingAwareAlignments": true
+        }
     },
     "styles": {
         "blocks": {
@@ -509,22 +526,5 @@
             "fontSize": "var(--wp--preset--font-size--body)",
             "lineHeight": "1.45"
         }
-    },
-    "templateParts": [
-        {
-            "area": "header",
-            "name": "header",
-            "title": "Header"
-        },
-        {
-            "area": "footer",
-            "name": "footer",
-            "title": "Footer"
-        },
-        {
-            "area": "uncategorized",
-            "name": "sidebar",
-            "title": "Sidebar"
-        }
-    ]
+    }
 }

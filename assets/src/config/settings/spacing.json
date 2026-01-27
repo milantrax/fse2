@@ -1,0 +1,57 @@
+{
+    "spacingSizes": [
+        {
+            "name": "2XS",
+            "size": "10px",
+            "slug": "xxs"
+        },
+        {
+            "name": "XS",
+            "size": "15px",
+            "slug": "xs"
+        },
+        {
+            "name": "S",
+            "size": "20px",
+            "slug": "s"
+        },
+        {
+            "name": "M",
+            "size": "30px",
+            "slug": "m"
+        },
+        {
+            "name": "L",
+            "size": "40px",
+            "slug": "l"
+        },
+        {
+            "name": "XL",
+            "size": "60px",
+            "slug": "xl"
+        },
+        {
+            "name": "2XL",
+            "size": "80px",
+            "slug": "xxl"
+        },
+        {
+            "name": "3XL",
+            "size": "120px",
+            "slug": "xxxl"
+        },
+        {
+            "name": "Responsive XL",
+            "size": "clamp(40px, 6vw, 80px)",
+            "slug": "responsive-xl"
+        }
+    ],
+    "units": [
+        "px",
+        "em",
+        "rem",
+        "vh",
+        "vw",
+        "%"
+    ]
+}

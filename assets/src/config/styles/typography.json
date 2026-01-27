@@ -1,0 +1,5 @@
+{
+    "fontFamily": "var(--wp--preset--font-family--manrope)",
+    "fontSize": "var(--wp--preset--font-size--body)",
+    "lineHeight": "1.45"
+}
