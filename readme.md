@@ -200,10 +200,10 @@ The theme includes custom WP-CLI commands for global styles management:
 
 ```bash
 # List all available commands
-wp granola
+wp
 
 # Global styles commands
-wp granola global-styles <command>
+wp global-styles <command>
 ```
 
 ## Theme Configuration

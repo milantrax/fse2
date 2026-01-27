@@ -79,7 +79,7 @@ class Assets
         }
 
         wp_enqueue_style(
-            'my-fse-theme-styles',
+            'theme-styles',
             self::$assetsUri . '/main.css',
             [],
             self::$version
@@ -100,7 +100,7 @@ class Assets
         }
 
         wp_enqueue_script(
-            'my-fse-theme-scripts',
+            'theme-scripts',
             self::$assetsUri . '/main.js',
             [],
             self::$version,
