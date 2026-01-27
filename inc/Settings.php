@@ -48,25 +48,14 @@ class Settings
      */
     public function setup()
     {
-        // Add default posts and comments RSS feed links to head
+        load_theme_textdomain('fse2', get_template_directory() . '/languages');
+        
         add_theme_support('automatic-feed-links');
-
-        // Let WordPress manage the document title
         add_theme_support('title-tag');
-
-        // Enable support for Post Thumbnails
         add_theme_support('post-thumbnails');
-
-        // Add support for responsive embedded content
         add_theme_support('responsive-embeds');
-
-        // Add support for block styles
         add_theme_support('wp-block-styles');
-
-        // Add support for editor styles
         add_theme_support('editor-styles');
-
-        // Add support for wide alignment
         add_theme_support('align-wide');
     }
 
@@ -78,7 +67,7 @@ class Settings
     public function registerPatternCategories()
     {
         register_block_pattern_category('my-theme', [
-            'label' => __('My Theme Patterns', 'my-fse-theme'),
+            'label' => __('My Theme Patterns', 'fse2'),
         ]);
     }
 
@@ -92,7 +81,6 @@ class Settings
      */
     public function removeDefaultPatterns()
     {
-        // Remove core block patterns
         remove_theme_support('core-block-patterns');
     }
 }
