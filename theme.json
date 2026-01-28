@@ -180,6 +180,7 @@
             ]
         },
         "spacing": {
+            "defaultSpacingSizes": false,
             "spacingSizes": [
                 {
                     "name": "2XS",
@@ -237,6 +238,7 @@
             ]
         },
         "typography": {
+            "defaultFontSizes": false,
             "fluid": true,
             "fontFamilies": [
                 {
@@ -509,8 +511,8 @@
         "spacing": {
             "blockGap": "var(--wp--preset--spacing--m)",
             "padding": {
-                "left": "var(--wp--custom--space--containerPadding)",
-                "right": "var(--wp--custom--space--containerPadding)"
+                "left": "var(--wp--preset--spacing--m)",
+                "right": "var(--wp--preset--spacing--m)"
             }
         },
         "typography": {
