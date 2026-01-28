@@ -245,21 +245,6 @@
                     "slug": "system"
                 },
                 {
-                    "name": "Cormorant Garamond Light",
-                    "slug": "cormorant-garamond-light",
-                    "fontFamily": "\"Cormorant Garamond Light\"",
-                    "fontFace": [
-                        {
-                            "fontFamily": "\"Cormorant Garamond Light\"",
-                            "fontStyle": "normal",
-                            "fontWeight": "300 700",
-                            "src": [
-                                "file:./assets/fonts/cormorant-garamond-light/Cormorant-Garamond.woff2"
-                            ]
-                        }
-                    ]
-                },
-                {
                     "name": "Cormorant Garamond",
                     "slug": "cormorant-garamond",
                     "fontFamily": "\"Cormorant Garamond\"",
@@ -269,22 +254,7 @@
                             "fontStyle": "normal",
                             "fontWeight": "300",
                             "src": [
-                                "file:./assets/fonts/cormorant-garamond/CormorantGaramond-Light.woff2"
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "name": "Manrope ExtraLight",
-                    "slug": "manrope-extralight",
-                    "fontFamily": "\"Manrope ExtraLight\"",
-                    "fontFace": [
-                        {
-                            "fontFamily": "\"Manrope ExtraLight\"",
-                            "fontStyle": "normal",
-                            "fontWeight": "200 800",
-                            "src": [
-                                "file:./assets/fonts/manrope-extralight/Manrope.woff2"
+                                "file:./assets/build/fonts/cormorant-garamond.woff2"
                             ]
                         }
                     ]
@@ -292,14 +262,14 @@
                 {
                     "name": "Manrope",
                     "slug": "manrope",
-                    "fontFamily": "Manrope",
+                    "fontFamily": "\"Manrope\"",
                     "fontFace": [
                         {
-                            "fontFamily": "Manrope",
+                            "fontFamily": "\"Manrope\"",
                             "fontStyle": "normal",
-                            "fontWeight": "200",
+                            "fontWeight": "400",
                             "src": [
-                                "file:./assets/fonts/manrope/Manrope-ExtraLight.woff2"
+                                "file:./assets/build/fonts/manrope.woff2"
                             ]
                         }
                     ]
