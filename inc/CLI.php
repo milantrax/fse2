@@ -26,9 +26,7 @@ class CLI
      */
     public static function init()
     {
-        self::suppressDeprecationWarnings(function() {
-            self::registerCommands();
-        });
+        self::registerCommands();
     }
 
     /**
@@ -39,21 +37,5 @@ class CLI
     private static function registerCommands()
     {
         WP_CLI::add_command('global-styles', 'FSE2\CLI\GlobalStylesCommand');
-    }
-
-    /**
-     * Suppress deprecation warnings during execution
-     *
-     * @param callable $callable Callable to execute.
-     * @return void
-     */
-    private static function suppressDeprecationWarnings($callable)
-    {
-        $previousErrorReporting = error_reporting();
-        error_reporting($previousErrorReporting & ~E_DEPRECATED);
-
-        $callable();
-
-        error_reporting($previousErrorReporting);
     }
 }

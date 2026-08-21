@@ -135,7 +135,7 @@ class GlobalStylesCommand
         $userStyles = $this->cleanInternalFlags($userStyles);
 
         if ($backup && !$dryRun) {
-            $timestamp = date('Y-m-d_H-i-s');
+            $timestamp = gmdate('Y-m-d_H-i-s');
             $backupPath = $this->backupConfigModules($timestamp);
 
             if (is_wp_error($backupPath)) {

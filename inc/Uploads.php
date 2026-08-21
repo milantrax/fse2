@@ -75,7 +75,7 @@ class Uploads
      * @param array  $mimes    Mime types.
      * @return array Modified file data.
      */
-    public static function fixSvgFiletypeCheck($data, $file, $filename, $mimes)
+    public static function fixSvgFiletypeCheck($data, $file, $filename, $mimes) // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter -- fixed filter signature.
     {
         if (!self::isSvgFilename($filename)) {
             return $data;
@@ -119,6 +119,7 @@ class Uploads
             return $file;
         }
 
+        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- reading the local upload temp file; WP_Filesystem targets the site filesystem, not PHP's upload staging area.
         $markup = file_get_contents($file['tmp_name']);
 
         if ($markup === false || stripos($markup, '<svg') === false) {
@@ -129,6 +130,7 @@ class Uploads
         $sanitized = self::stripActiveContent($markup);
 
         if ($sanitized !== $markup) {
+            // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents -- same: the upload temp file must be rewritten in place before WordPress moves it.
             file_put_contents($file['tmp_name'], $sanitized);
         }
 
