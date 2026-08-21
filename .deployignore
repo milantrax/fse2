@@ -1,31 +1,57 @@
-_src
-_src/**
-node_modules
-node_modules/**
-build
-build/**
-.vscode
-.vscode/**
-.babelrc
-.browserslistrc
+# Version control & tooling
+.git
+.git/**
+.github
+.github/**
+.gitignore
+.gitattributes
 .deployignore
 .editorconfig
-.env.js.sample
-.eslintrc.json
-.gitignore
-.gitkeep
-**/.gitkeep
-.gitmodules
 .nvmrc
 .prettierrc
 .stylelintrc
+.claude
+.claude/**
+
+# Agent / contributor docs
+AGENTS.md
+CLAUDE.md
+docs
+docs/**
+readme.md
+
+# Dependencies & lockfiles
+node_modules
+node_modules/**
+package.json
+package-lock.json
 composer.json
 composer.lock
-gulpfile.js
-LICENCE
-package-lock.json
-package.json
-phpcs.xml
-postcss.config.js
-readme.md
+
+# Node build scripts (anchored so it cannot match blocks/*/build)
+/build
+/build/**
 webpack.config.js
+
+# Theme sources - only assets/build ships
+assets/src
+assets/src/**
+
+# Block sources - only blocks/*/build ships
+blocks/*/src
+blocks/*/src/**
+blocks/*/package.json
+blocks/*/node_modules
+blocks/*/node_modules/**
+
+# OS noise
+.DS_Store
+**/.DS_Store
+Thumbs.db
+
+# Local state
+backups
+backups/**
+.env
+.env.local
+*.log

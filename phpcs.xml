@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<ruleset name="FSE2">
+    <description>
+        WordPress coding standards for the FSE2 theme, with the deviations the theme
+        deliberately makes: 4-space indentation, camelCase methods and variables, and
+        no space padding inside parentheses. Those are project decisions, declared here
+        so they are enforced consistently rather than merely tolerated.
+    </description>
+
+    <file>.</file>
+
+    <exclude-pattern>*/node_modules/*</exclude-pattern>
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/build/*</exclude-pattern>
+    <exclude-pattern>*/assets/build/*</exclude-pattern>
+
+    <arg name="extensions" value="php"/>
+    <arg name="colors"/>
+    <arg value="sp"/>
+
+    <config name="minimum_wp_version" value="6.6"/>
+    <config name="testVersion" value="7.4-"/>
+
+    <rule ref="WordPress">
+        <!--
+            The theme uses PSR-4 with an autoloader, so WordPress file naming
+            (class-foo.php) does not apply.
+        -->
+        <exclude name="WordPress.Files.FileName"/>
+
+        <!-- Deliberate: camelCase methods and variables, PascalCase classes. -->
+        <exclude name="WordPress.NamingConventions.ValidVariableName"/>
+        <exclude name="WordPress.NamingConventions.ValidFunctionName"/>
+
+        <!-- Deliberate: short array syntax. -->
+        <exclude name="Universal.Arrays.DisallowShortArraySyntax"/>
+
+        <!-- Deliberate: no space padding inside parentheses or array brackets. -->
+        <exclude name="WordPress.WhiteSpace.ControlStructureSpacing"/>
+        <exclude name="WordPress.WhiteSpace.OperatorSpacing"/>
+        <exclude name="WordPress.WhiteSpace.CastStructureSpacing"/>
+        <exclude name="WordPress.Arrays.ArrayKeySpacingRestrictions"/>
+        <exclude name="NormalizedArrays.Arrays.ArrayBraceSpacing"/>
+        <exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing"/>
+        <exclude name="Squiz.Functions.MultiLineFunctionDeclaration"/>
+        <exclude name="Generic.WhiteSpace.ArbitraryParenthesesSpacing"/>
+        <exclude name="PEAR.Functions.FunctionCallSignature"/>
+
+        <!-- Deliberate: opening brace on its own line for functions and classes. -->
+        <exclude name="Generic.Functions.OpeningFunctionBraceKernighanRitchie"/>
+        <exclude name="Generic.Classes.OpeningBraceSameLine"/>
+        <exclude name="Squiz.ControlStructures.ControlSignature"/>
+
+        <!-- Deliberate: no vertical alignment of assignments or double arrows. -->
+        <exclude name="Generic.Formatting.MultipleStatementAlignment"/>
+        <exclude name="WordPress.Arrays.MultipleStatementAlignment"/>
+
+        <!-- Deliberate: conditions read subject-first. -->
+        <exclude name="WordPress.PHP.YodaConditions"/>
+
+        <!-- Deliberate: 4 spaces, not tabs. -->
+        <exclude name="Generic.WhiteSpace.DisallowSpaceIndent"/>
+        <exclude name="WordPress.Arrays.ArrayIndentation"/>
+    </rule>
+
+    <!--
+        Build scripts run outside WordPress, where the WP filesystem and HTTP
+        wrappers do not exist. Only theme runtime code is held to those rules.
+    -->
+    <rule ref="WordPress.WP.AlternativeFunctions">
+        <exclude-pattern>*/build/*</exclude-pattern>
+        <exclude-pattern>*/inc/CLI/*</exclude-pattern>
+    </rule>
+
+    <rule ref="WordPress.PHP.DiscouragedPHPFunctions">
+        <exclude-pattern>*/inc/CLI/*</exclude-pattern>
+    </rule>
+
+    <rule ref="Generic.WhiteSpace.ScopeIndent">
+        <properties>
+            <property name="indent" value="4"/>
+            <property name="tabIndent" value="false"/>
+        </properties>
+    </rule>
+
+    <rule ref="WordPress.WP.I18n">
+        <properties>
+            <property name="text_domain" type="array">
+                <element value="fse2"/>
+            </property>
+        </properties>
+    </rule>
+</ruleset>

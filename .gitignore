@@ -31,4 +31,8 @@ assets/build
 # Global styles backups
 backups/theme.json.backup.*
 backups
-AGENTS.md
+*.md
+!readme.md
+
+# Generated translation catalogues (regenerate with wp i18n make-pot)
+languages/*.mo
