@@ -2,6 +2,9 @@
     "name": "fse2",
     "version": "0.1.0",
     "scripts": {
+        "setup": "node build/setup.js",
+        "setup:production": "node build/setup.js --production",
+        "setup:check": "node build/setup.js --check",
         "build:theme-json": "node build/build-theme-json.js",
         "build:images": "node build/build-images.js",
         "sync": "node build/sync-theme-styles.js",
