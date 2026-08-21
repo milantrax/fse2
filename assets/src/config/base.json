@@ -1,4 +1,5 @@
 {
+    "//": "GENERATED FILE. Do not edit theme.json directly - it is overwritten by `npm run build:theme-json` from assets/src/config/**. Edit the config modules there instead.",
     "$schema": "https://schemas.wp.org/wp/6.9/theme.json",
     "version": 3
 }
