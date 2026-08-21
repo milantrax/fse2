@@ -26,6 +26,30 @@ const ensureDirectoryExists = (dir) => {
     }
 };
 
+/**
+ * Copy images through unoptimised.
+ *
+ * Used when the native optimiser binaries are unavailable. The imagemin *-bin
+ * packages fetch platform binaries in a postinstall step, which fails on clean
+ * installs behind a proxy, with --ignore-scripts, or on unsupported platforms.
+ * A missing optimiser must not mean a missing image: theme.json and the templates
+ * reference these files, so delivery matters more than compression.
+ *
+ * @param {string[]} images Source-relative image paths.
+ * @return {void}
+ */
+const copyImages = (images) => {
+    images.forEach((relPath) => {
+        const from = path.join(srcDir, relPath);
+        const to = path.join(buildDir, relPath);
+
+        ensureDirectoryExists(path.dirname(to));
+        fs.copyFileSync(from, to);
+
+        console.log(`  - ${relPath} (copied, not optimized)`);
+    });
+};
+
 const optimizeImages = async () => {
     console.log('[BUILD] Optimizing images...\n');
 
@@ -79,13 +103,18 @@ const optimizeImages = async () => {
             const optimizedSize = fs.statSync(file.destinationPath).size;
             const savings = ((1 - optimizedSize / originalSize) * 100).toFixed(1);
 
-            console.log(`  ✓ ${relativePath} (${savings}% smaller)`);
+            console.log(`  - ${relativePath} (${savings}% smaller)`);
         });
 
         console.log(`\n[DONE] ${files.length} image(s) optimized successfully!\n`);
     } catch (error) {
-        console.error('[ERROR] Error optimizing images:', error.message);
-        process.exit(1);
+        console.warn('[WARN] Image optimizer unavailable, copying originals instead.');
+        console.warn(`[WARN] ${error.message.split('\n')[0]}`);
+        console.warn('[WARN] Reinstall with scripts enabled to restore optimization.\n');
+
+        copyImages(srcImages);
+
+        console.log(`\n[DONE] ${srcImages.length} image(s) copied (unoptimized).\n`);
     }
 };
 

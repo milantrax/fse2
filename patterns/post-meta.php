@@ -1,4 +1,15 @@
-<!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"},"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"fontSize":"small"} -->
+<?php
+/**
+ * Title: Post meta
+ * Slug: fse2/post-meta
+ * Categories: fse2
+ * Description: Date, author and category for a single post, separated by dots.
+ *
+ * @package FSE2
+ */
+
+?>
+<!-- wp:group {"layout":{"type":"flex","flexWrap":"wrap"},"style":{"spacing":{"blockGap":"var:preset|spacing|xxs"}},"fontSize":"small"} -->
 <div class="wp-block-group has-small-font-size">
     <!-- wp:post-date /-->
     <!-- wp:paragraph -->

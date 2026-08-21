@@ -25,9 +25,9 @@ class Blocks
     private static $blocksDir;
 
     /**
-     * Block names to register
+     * Resolved block directory paths, keyed by block directory name
      *
-     * @var array
+     * @var array|null
      */
     private static $blocks;
 
@@ -40,40 +40,9 @@ class Blocks
     {
         if (self::$blocksDir === null) {
             self::$blocksDir = get_template_directory() . '/blocks';
-            self::$blocks = self::getBlocksFromDirectory();
         }
 
         add_action('init', [__CLASS__, 'registerBlocks']);
-    }
-
-    /**
-     * Get all valid blocks from the blocks directory
-     *
-     * @return array Array of block directory names.
-     */
-    private static function getBlocksFromDirectory()
-    {
-        $blocks = [];
-
-        if (!is_dir(self::$blocksDir)) {
-            return $blocks;
-        }
-
-        $items = scandir(self::$blocksDir);
-
-        foreach ($items as $item) {
-            if ($item === '.' || $item === '..') {
-                continue;
-            }
-
-            $blockPath = self::$blocksDir . '/' . $item;
-
-            if (is_dir($blockPath) && self::isValidBlock($blockPath)) {
-                $blocks[] = $item;
-            }
-        }
-
-        return $blocks;
     }
 
     /**
@@ -83,44 +52,76 @@ class Blocks
      */
     public static function registerBlocks()
     {
-        foreach (self::$blocks as $block) {
-            self::registerBlock($block);
+        foreach (self::getBlockPaths() as $blockPath) {
+            self::registerMetadataCollection($blockPath);
+            register_block_type($blockPath);
         }
     }
 
     /**
-     * Register a single block
+     * Register a block's generated metadata collection, when one exists
      *
-     * @param string $blockName Block directory name.
-     * @return bool True if registered successfully.
+     * `wp-scripts build --blocks-manifest` emits a blocks-manifest.php beside the
+     * built block. Registering it lets WordPress read the block's metadata from that
+     * one PHP file instead of opening and decoding block.json on every request.
+     *
+     * @param string $blockPath Absolute path to the built block directory.
+     * @return void
      */
-    private static function registerBlock($blockName)
+    private static function registerMetadataCollection($blockPath)
     {
-        $blockPath = self::$blocksDir . '/' . $blockName;
-
-        if (!self::isValidBlock($blockPath)) {
-            return false;
+        if (!function_exists('wp_register_block_metadata_collection')) {
+            return;
         }
 
-        // If block.json is in build/, register from build/ directory
-        if (file_exists($blockPath . '/build/block.json')) {
-            $blockPath = $blockPath . '/build';
+        $manifest = $blockPath . '/blocks-manifest.php';
+
+        if (!file_exists($manifest)) {
+            return;
         }
 
-        register_block_type($blockPath);
-        return true;
+        // The manifest is keyed by directory name relative to its parent, so the
+        // collection root is the directory above the built block.
+        wp_register_block_metadata_collection(dirname($blockPath), $manifest);
     }
 
     /**
-     * Check if block directory is valid
+     * Get the registerable path for every block in the blocks directory
      *
-     * @param string $blockPath Full path to block directory.
-     * @return bool True if valid block directory.
+     * Resolved once per request and cached, since this runs on every page load.
+     *
+     * @return array List of absolute block paths.
      */
-    private static function isValidBlock($blockPath)
+    private static function getBlockPaths()
     {
-        // Check for block.json in root or build/ subdirectory
-        return file_exists($blockPath . '/block.json') ||
-               file_exists($blockPath . '/build/block.json');
+        if (self::$blocks !== null) {
+            return self::$blocks;
+        }
+
+        self::$blocks = [];
+
+        // A built block keeps its block.json in build/; an unbuilt one keeps it at the
+        // block root. Two glob() calls resolve both, rather than a scandir plus a pair
+        // of file_exists() checks per block on every request.
+        $candidates = array_merge(
+            (array) glob(self::$blocksDir . '/*/build/block.json'),
+            (array) glob(self::$blocksDir . '/*/block.json')
+        );
+
+        $resolved = [];
+
+        foreach ($candidates as $manifestPath) {
+            $blockPath = dirname($manifestPath);
+            $blockName = basename(str_replace('/build', '', $blockPath));
+
+            // Built output wins over its own unbuilt source.
+            if (!isset($resolved[$blockName])) {
+                $resolved[$blockName] = $blockPath;
+            }
+        }
+
+        self::$blocks = array_values($resolved);
+
+        return self::$blocks;
     }
 }

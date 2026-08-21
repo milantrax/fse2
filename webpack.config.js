@@ -57,15 +57,6 @@ module.exports = {
       filename: '[name].css'
     }),
   ],
-  externals: {
-    '@wordpress/blocks': ['wp', 'blocks'],
-    '@wordpress/block-editor': ['wp', 'blockEditor'],
-    '@wordpress/components': ['wp', 'components'],
-    '@wordpress/element': ['wp', 'element'],
-    '@wordpress/i18n': ['wp', 'i18n'],
-    'react': 'React',
-    'react-dom': 'ReactDOM'
-  },
   resolve: {
     extensions: ['.js', '.jsx']
   }

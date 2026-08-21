@@ -11,10 +11,7 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import {
-	useBlockProps,
-	RichText,
-} from '@wordpress/block-editor';
+import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -36,9 +33,7 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 export default function Edit( { attributes, setAttributes } ) {
-	const {
-		message,
-	} = attributes;
+	const { message } = attributes;
 
 	const blockProps = useBlockProps( {
 		className: 'hello-blocks',
@@ -51,7 +46,7 @@ export default function Edit( { attributes, setAttributes } ) {
 				className="hello-blocks__message"
 				value={ message }
 				onChange={ ( value ) => setAttributes( { message: value } ) }
-				placeholder={ __( 'Enter your message...', 'fse2-hello-blocks' ) }
+				placeholder={ __( 'Enter your message…', 'fse2' ) }
 			/>
 		</div>
 	);

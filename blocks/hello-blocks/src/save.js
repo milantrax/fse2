@@ -13,14 +13,12 @@ import { useBlockProps, RichText } from '@wordpress/block-editor';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#save
  *
- * @param {Object} props Block props.
+ * @param {Object} props            Block props.
  * @param {Object} props.attributes Block attributes.
  * @return {Element} Element to render.
  */
 export default function save( { attributes } ) {
-	const {
-		message,
-	} = attributes;
+	const { message } = attributes;
 
 	const blockProps = useBlockProps.save( {
 		className: 'hello-blocks',
@@ -28,11 +26,7 @@ export default function save( { attributes } ) {
 
 	return (
 		<div { ...blockProps }>
-			<RichText.Content
-				tagName="p"
-				className="hello-blocks__message"
-				value={ message }
-			/>
+			<RichText.Content tagName="p" className="hello-blocks__message" value={ message } />
 		</div>
 	);
 }

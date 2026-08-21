@@ -2,20 +2,30 @@
     "name": "fse2",
     "version": "0.1.0",
     "scripts": {
+        "setup": "node build/setup.js",
+        "setup:production": "node build/setup.js --production",
+        "setup:check": "node build/setup.js --check",
         "build:theme-json": "node build/build-theme-json.js",
         "build:images": "node build/build-images.js",
         "sync": "node build/sync-theme-styles.js",
         "build:theme": "webpack --mode production",
         "build:blocks": "npm run build --workspaces --if-present",
-        "build": "npm run build:theme-json && npm run build:images && npm run sync && npm run build:theme && npm run build:blocks",
+        "build": "npm run build:theme-json && npm run verify:presets && npm run build:images && npm run build:fonts && npm run sync && npm run build:theme && npm run build:blocks",
         "dev:theme": "webpack --mode development --watch",
         "dev:blocks": "npm run start --workspaces --if-present",
-        "dev": "npm run build:theme-json && npm run build:images && npm run sync && npm run dev:theme & npm run dev:blocks"
+        "dev": "npm run build:theme-json && npm run build:images && npm run build:fonts && npm run sync && npm run dev:theme & npm run dev:blocks",
+        "build:fonts": "node build/build-fonts.js",
+        "verify:presets": "node build/verify-presets.js",
+        "lint:css": "stylelint \"assets/src/scss/**/*.scss\"",
+        "lint:css:fix": "stylelint \"assets/src/scss/**/*.scss\" --fix",
+        "lint:blocks:css": "npm run lint:css --workspaces --if-present",
+        "lint": "npm run lint:css && npm run lint:blocks:css"
     },
     "workspaces": [
         "blocks/*"
     ],
     "devDependencies": {
+        "@stylistic/stylelint-plugin": "^5.3.0",
         "@wordpress/babel-preset-default": "^7.0.0",
         "@wordpress/scripts": "^31.3.0",
         "autoprefixer": "^10.4.16",
@@ -32,6 +42,9 @@
         "sass": "^1.69.5",
         "sass-loader": "^13.3.2",
         "sass-mq": "^7.0.0",
+        "stylelint": "^17.14.1",
+        "stylelint-config-idiomatic-order": "^10.0.0",
+        "stylelint-config-sass-guidelines": "^13.0.0",
         "webpack": "^5.89.0",
         "webpack-cli": "^5.1.4"
     }

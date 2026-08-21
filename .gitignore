@@ -1,7 +1,10 @@
 # Dependencies
 node_modules/
 vendor/
-composer.lock
+
+# composer.lock is committed deliberately. This theme is a deployable artifact,
+# not a library: without the lock, `composer install` resolves latest versions on
+# every clone, so phpcs/WPCS drift between machines and lint results stop matching.
 
 # Build outputs (uncomment for production)
 # assets/build/
@@ -31,4 +34,8 @@ assets/build
 # Global styles backups
 backups/theme.json.backup.*
 backups
-AGENTS.md
+*.md
+!readme.md
+
+# Generated translation catalogues (regenerate with wp i18n make-pot)
+languages/*.mo

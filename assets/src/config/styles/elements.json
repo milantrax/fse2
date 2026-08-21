@@ -2,14 +2,15 @@
     "button": {
         ":focus": {
             "color": {
-                "background": "var(--wp--preset--color--black)",
-                "text": "var(--wp--preset--color--white)"
-            }
+                "background": "var(--wp--preset--color--blueberry)",
+                "text": "var(--wp--preset--color--pure-white)"
+            },
+            "css": "outline: 2px solid var(--wp--preset--color--blue); outline-offset: 2px;"
         },
         ":hover": {
             "color": {
-                "background": "var(--wp--preset--color--black)",
-                "text": "var(--wp--preset--color--white)"
+                "background": "var(--wp--preset--color--blueberry)",
+                "text": "var(--wp--preset--color--pure-white)"
             }
         },
         "border": {

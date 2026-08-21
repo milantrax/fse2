@@ -1,2 +1,62 @@
 @use 'variables' as *;
 @use 'mixins/mq' as *;
+
+// The four modules in assets/src/js each toggle a class on an element. None of those
+// classes had a rule anywhere in the theme, so every module ran and changed nothing.
+// These are the styles those modules exist to switch on.
+
+// Header state applied by modules/header-scroll.js past 50px of scroll.
+.wp-site-blocks > header {
+    transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+
+    &.is-scrolled {
+        position: sticky;
+        z-index: 100;
+        top: 0;
+        background-color: var(--wp--preset--color--barely-white);
+        box-shadow: var(--wp--preset--shadow--small);
+    }
+}
+
+// Reveal state applied by modules/scroll-animations.js via IntersectionObserver.
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+    &.is-visible {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+// Overlay state applied by modules/mobile-menu.js. Core ships its own responsive
+// container styles; this only covers the class the module adds on top of them.
+.wp-block-navigation__responsive-container.is-menu-open {
+    background-color: var(--wp--preset--color--blueberry);
+    color: var(--wp--preset--color--barely-white);
+
+    a {
+        color: currentColor;
+    }
+}
+
+// Focus visibility. theme.json can style :focus on buttons and links, but not the
+// :focus-visible fallback for everything else that can take keyboard focus.
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 2px solid var(--wp--preset--color--blue);
+    outline-offset: 2px;
+}
+
+// Honour the OS-level motion preference for every transition declared above.
+@media (prefers-reduced-motion: reduce) {
+    .wp-site-blocks > header,
+    .animate-on-scroll {
+        transition: none;
+    }
+
+    .animate-on-scroll {
+        opacity: 1;
+        transform: none;
+    }
+}

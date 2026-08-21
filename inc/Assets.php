@@ -32,13 +32,6 @@ class Assets
     private static $assetsUri;
 
     /**
-     * Theme version
-     *
-     * @var string
-     */
-    private static $version;
-
-    /**
      * Initialize hooks
      *
      * @return void
@@ -48,7 +41,6 @@ class Assets
         if (self::$assetsDir === null) {
             self::$assetsDir = get_template_directory() . '/assets/build';
             self::$assetsUri = get_template_directory_uri() . '/assets/build';
-            self::$version = wp_get_theme()->get('Version');
         }
 
         add_action('wp_enqueue_scripts', [__CLASS__, 'enqueueAssets']);
@@ -74,7 +66,7 @@ class Assets
     {
         $cssPath = self::$assetsDir . '/main.css';
 
-        if (!file_exists($cssPath)) {
+        if (!self::hasContent($cssPath)) {
             return;
         }
 
@@ -82,7 +74,7 @@ class Assets
             'theme-styles',
             self::$assetsUri . '/main.css',
             [],
-            self::$version
+            self::assetVersion($cssPath)
         );
     }
 
@@ -95,7 +87,7 @@ class Assets
     {
         $jsPath = self::$assetsDir . '/main.js';
 
-        if (!file_exists($jsPath)) {
+        if (!self::hasContent($jsPath)) {
             return;
         }
 
@@ -103,8 +95,36 @@ class Assets
             'theme-scripts',
             self::$assetsUri . '/main.js',
             [],
-            self::$version,
+            self::assetVersion($jsPath),
             true
         );
+    }
+
+    /**
+     * Check that an asset exists and is not empty
+     *
+     * An empty bundle still costs a render-blocking request, so a build that
+     * produced nothing should not be enqueued at all.
+     *
+     * @param string $path Absolute path to the asset.
+     * @return bool True when the file exists and has content.
+     */
+    private static function hasContent($path)
+    {
+        return file_exists($path) && filesize($path) > 0;
+    }
+
+    /**
+     * Build a cache-busting version string for an asset
+     *
+     * The theme version only changes at release, so it cannot invalidate a rebuilt
+     * bundle. File modification time tracks the build instead.
+     *
+     * @param string $path Absolute path to the asset.
+     * @return string Version string.
+     */
+    private static function assetVersion($path)
+    {
+        return (string) filemtime($path);
     }
 }
