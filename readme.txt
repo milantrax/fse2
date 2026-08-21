@@ -22,10 +22,14 @@ into SCSS variables so the stylesheet and the block editor never drift apart.
 2. Activate the theme through Appearance > Themes.
 3. Edit templates, parts and global styles under Appearance > Editor.
 
-Building from source requires Node (see .nvmrc) and Composer:
+Building from source requires Node (see .nvmrc), PHP and Composer:
 
-    npm ci && composer install
-    npm run build
+    npm run setup
+
+That checks prerequisites, installs Node and Composer dependencies, runs the full
+build, and verifies every file the theme needs at runtime. Use
+`npm run setup:production` for a deployment build without dev dependencies, or
+`npm run setup:check` to diagnose an existing checkout.
 
 == Copyright ==
 
