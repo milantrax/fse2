@@ -4,13 +4,20 @@
 <main class="wp-block-group">
     <!-- wp:group {"align":"full","className":"is-style-section","layout":{"type":"constrained"}} -->
     <div class="wp-block-group alignfull is-style-section">
+        <!-- wp:query-title {"type":"search"} /-->
+
+        <!-- wp:search {"label":"Search","showLabel":false,"buttonText":"Search"} /-->
+
         <!-- wp:query {"queryId":0,"query":{"perPage":10,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true}} -->
         <div class="wp-block-query">
             <!-- wp:post-template -->
-                <!-- wp:post-title {"isLink":true} /-->
-                <!-- wp:post-featured-image {"isLink":true,"scale":"cover"} /-->
-                <!-- wp:post-excerpt {"moreText":"Read more"} /-->
-                <!-- wp:post-date /-->
+                <!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|m","bottom":"var:preset|spacing|m"}}}} -->
+                <div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--m);padding-bottom:var(--wp--preset--spacing--m)">
+                    <!-- wp:post-title {"isLink":true} /-->
+                    <!-- wp:post-excerpt {"moreText":"Read more"} /-->
+                    <!-- wp:pattern {"slug":"fse2/post-meta"} /-->
+                </div>
+                <!-- /wp:group -->
             <!-- /wp:post-template -->
 
             <!-- wp:query-pagination -->
